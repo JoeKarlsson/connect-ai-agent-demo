@@ -29,6 +29,8 @@ The same agent works against any source you've connected in your CData account â
 **1. Install dependencies**
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate  # on Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
@@ -44,6 +46,11 @@ Edit `.env`:
 - `ANTHROPIC_API_KEY` â€” your Anthropic API key
 
 **3. Run it**
+
+Activate the virtual environment first (required every new terminal session):
+```bash
+source .venv/bin/activate
+```
 
 Interactive mode:
 ```bash
