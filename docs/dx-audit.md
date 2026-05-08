@@ -87,6 +87,28 @@
 
 ---
 
+### Issue 6: No terminal-first setup path — dashboard required for OAuth and PAT generation
+**What happened:** Setting up Connect AI with a coding agent (Claude Code, Cursor, etc.) requires multiple context switches to a browser:
+1. Create account at cloud.cdata.com
+2. Navigate dashboard UI to add a data source
+3. Complete OAuth flow in browser
+4. Navigate to Settings → Access Tokens to generate a PAT
+5. Copy PAT back to terminal / .env file
+
+Every one of these steps breaks the terminal-first workflow. For a developer using an AI coding assistant, each browser switch is a blocker — the agent loses context, the developer has to manually relay information back, and the setup process slows to a crawl.
+
+**Why this matters for the CData CLI:** The CLI product is explicitly positioned as the "developer ergonomics layer for the AI-assisted coding era." A developer using Claude Code or Cursor to build a Connect AI integration should be able to do the entire setup without leaving the terminal:
+```bash
+cdata auth login                        # browser OAuth once, token stored locally
+cdata sources add google-sheets         # launches OAuth flow, handles callback
+cdata sources add github --token $PAT   # PAT-based sources via flag
+cdata token create --name "my-agent"    # generate Connect AI PAT from CLI
+cdata sources list                      # verify what's connected
+```
+This is the pattern developers expect from modern CLI tools (Vercel, Stripe, Heroku, GitHub CLI). Without it, Connect AI has a "last mile" problem for the exact audience the Developer Edition targets.
+
+**Priority:** High. This is a product roadmap item for CLI GA, not a docs fix — but it's the single biggest friction point for developers building with AI coding assistants.
+
 ### Issue 5: Tool responses embed verbose schema metadata on every call
 **What happened:** Every `queryData` or `getTables` response includes a full `schema` array per row — column names, data types, catalog/schema/table names, ordinals, labels. This is useful once but gets sent back to the LLM on every tool call, bloating the context significantly and making agentic queries slow (or appear to hang).  
 **Impact:** With `claude-opus-4-7`, a simple query appeared to hang indefinitely. Switching to Sonnet and stripping the `schema` key from responses made the same query return in ~3 seconds.  
