@@ -59,8 +59,18 @@ class ConnectAIMCPClient:
         result = self._rpc("tools/call", {"name": tool_name, "arguments": arguments})
         content = result.get("content", [])
         if content and isinstance(content[0], dict):
-            return content[0].get("text", json.dumps(content))
-        return json.dumps(result)
+            text = content[0].get("text", json.dumps(content))
+        else:
+            text = json.dumps(result)
+        # CData responses include verbose schema metadata — strip it to keep context small
+        try:
+            parsed = json.loads(text)
+            if isinstance(parsed, dict) and "results" in parsed:
+                for row in parsed["results"]:
+                    row.pop("schema", None)
+            return json.dumps(parsed)
+        except (json.JSONDecodeError, AttributeError):
+            return text
 
     def get_sources(self) -> list[str]:
         """List connected data sources (convenience wrapper over list_tools)."""

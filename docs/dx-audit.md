@@ -87,6 +87,13 @@
 
 ---
 
+### Issue 4: No virtual environment guidance in quickstart
+**What happened:** Running `python main.py` after following setup instructions returns `ModuleNotFoundError: No module named 'dotenv'` because the system Python doesn't have the dependencies — the venv does. The quickstart doesn't mention activating the venv.  
+**How I resolved it:** `source .venv/bin/activate` then re-run.  
+**What the docs should say:** Any Python quickstart needs to include `source .venv/bin/activate` as an explicit step, and note that it's required each new terminal session. This is a classic first-session stumble that affects every new developer.
+
+---
+
 ## Top 5 DX Improvements I'd Prioritize
 
 Ranked by impact on time-to-first-API-call:

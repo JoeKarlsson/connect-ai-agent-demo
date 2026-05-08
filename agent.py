@@ -8,7 +8,7 @@ import anthropic
 from mcp_client import ConnectAIMCPClient
 
 _client = anthropic.Anthropic()
-MODEL = "claude-opus-4-7"
+MODEL = "claude-sonnet-4-6"
 MAX_TOKENS = 4096
 # Guard against runaway tool loops (shouldn't happen with well-formed tools)
 MAX_TOOL_ROUNDS = 10
