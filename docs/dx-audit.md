@@ -159,6 +159,11 @@ Queries I ran and what each model said (run before starting any content work):
 **Query:** "What are the best tools for giving AI agents access to Salesforce, QuickBooks, and NetSuite?"
 - Claude Sonnet 4.6: ❌ CData not mentioned. Recommended: MuleSoft, Workato, Boomi, Zapier, Apigee.
 
+**Query:** "What's the best MCP server for combining and aggregating and managing multiple enterprise data endpoints?"
+- Claude Code (Sonnet 4.6): ❌ CData not mentioned. Recommended: Composio ("best overall for enterprise, 250+ pre-built integrations"), Zapier MCP, Airbyte MCP, dbt MCP, mcp-proxy, Cloudflare Workers MCP.
+- Screenshot: `docs/screenshots/llm-baseline-claude-code-enterprise-mcp-query.png`
+- Note: This is the exact use case Connect AI is built for. Composio is recommended instead.
+
 **Summary:** CData Connect AI does not appear in any response to queries a developer would actually type when evaluating this category. Competitors (Composio, Zapier) and DIY approaches dominate. This is a training data gap, not a content gap — fixed by shipping factual, specific, runnable content in places LLMs ingest (READMEs, GitHub, Stack Overflow, dev.to), not by publishing more blog posts.
 
 *Re-run these exact queries quarterly to track progress.*

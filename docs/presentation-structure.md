@@ -78,6 +78,7 @@ Frame using the three distribution surfaces: human developers, search crawlers, 
 | "Best MCP server for enterprise SaaS data?" | ❌ No CData | Composio, Zapier MCP, Pipedream |
 | "How do I connect Claude to Salesforce?" | ❌ No CData | Custom build, community npm packages |
 | "Best tools for AI agents + Salesforce/QuickBooks/NetSuite?" | ❌ No CData | MuleSoft, Workato, Boomi, Zapier |
+| "Best MCP server for aggregating multiple enterprise data endpoints?" | ❌ No CData | Composio ("best overall"), Airbyte MCP, dbt MCP, mcp-proxy |
 
 > **CData didn't appear in a single response.** That's not a content gap — it's a training data gap. The fix is factual, specific, runnable content in places LLMs actually ingest: READMEs, Stack Overflow answers, GitHub examples, dev.to posts. Not blog posts. This is fixable in 30 days and measurable quarterly.
 
