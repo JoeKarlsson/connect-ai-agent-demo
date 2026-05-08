@@ -87,6 +87,11 @@
 
 ---
 
+### Issue 5: Tool responses embed verbose schema metadata on every call
+**What happened:** Every `queryData` or `getTables` response includes a full `schema` array per row — column names, data types, catalog/schema/table names, ordinals, labels. This is useful once but gets sent back to the LLM on every tool call, bloating the context significantly and making agentic queries slow (or appear to hang).  
+**Impact:** With `claude-opus-4-7`, a simple query appeared to hang indefinitely. Switching to Sonnet and stripping the `schema` key from responses made the same query return in ~3 seconds.  
+**Recommended fix:** Either make schema metadata opt-in via a query parameter (`?includeSchema=false`), or only return it on the first call per session. Developers building agents shouldn't have to work around this manually.
+
 ### Issue 4: No virtual environment guidance in quickstart
 **What happened:** Running `python main.py` after following setup instructions returns `ModuleNotFoundError: No module named 'dotenv'` because the system Python doesn't have the dependencies — the venv does. The quickstart doesn't mention activating the venv.  
 **How I resolved it:** `source .venv/bin/activate` then re-run.  
