@@ -10,8 +10,21 @@ from mcp_client import ConnectAIMCPClient
 _client = anthropic.Anthropic()
 MODEL = "claude-sonnet-4-6"
 MAX_TOKENS = 4096
-# Guard against runaway tool loops (shouldn't happen with well-formed tools)
 MAX_TOOL_ROUNDS = 10
+
+SYSTEM_PROMPT = """You are a data analyst with access to CData Connect AI, which provides SQL access to connected data sources.
+
+Available connections:
+- SampleConnection1 (PostgreSQL): tables include Customers, Orders, OrderLines, StockItems in schema 'public'
+- SampleConnection2 (MySQL): tables include Customers, Orders, OrderLines, StockItems in schema 'dv_demo_data'
+- SalesPipeline (Google Sheets): a sales pipeline spreadsheet with columns: opportunity_name, account_name, industry, stage, arr_value, close_date, account_owner, region, source
+- GitHub1 (GitHub): repositories, commits, issues, pull requests for the connected GitHub account
+
+Query tables using fully qualified names like: SampleConnection1.public.Customers
+For Google Sheets use: SalesPipeline.[Connect AI Demo — Sales Pipeline].[Sheet1]
+For GitHub use: GitHub1.GitHub.Repositories
+
+Use queryData to run SQL SELECT statements. Go directly to querying — do not call getCatalogs, getSchemas, or getTables unless the user asks about available data sources. Do not call getInstructions."""
 
 
 def run_query(user_query: str, mcp: ConnectAIMCPClient) -> str:
@@ -26,6 +39,7 @@ def run_query(user_query: str, mcp: ConnectAIMCPClient) -> str:
         response = _client.messages.create(
             model=MODEL,
             max_tokens=MAX_TOKENS,
+            system=SYSTEM_PROMPT,
             tools=tools,
             messages=messages,
         )
@@ -34,11 +48,12 @@ def run_query(user_query: str, mcp: ConnectAIMCPClient) -> str:
             return _extract_text(response.content)
 
         if response.stop_reason == "tool_use":
+            tool_names = [b.name for b in response.content if b.type == "tool_use"]
+            print(f"  → {', '.join(tool_names)}...", flush=True)
             tool_results = _execute_tool_calls(response.content, mcp)
             messages.append({"role": "assistant", "content": response.content})
             messages.append({"role": "user", "content": tool_results})
         else:
-            # Unexpected stop reason — return whatever text we have
             return _extract_text(response.content)
 
     return "Reached maximum tool call limit without a final answer."

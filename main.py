@@ -48,6 +48,7 @@ def main():
     # Single query mode: python main.py "what are my top accounts?"
     if len(sys.argv) > 1:
         query = " ".join(sys.argv[1:])
+        print("Thinking...", flush=True)
         answer = run_query(query, mcp)
         print(answer)
         return
@@ -68,6 +69,7 @@ def main():
             continue
 
         try:
+            print("Thinking...", flush=True)
             answer = run_query(query, mcp)
         except Exception as e:
             answer = f"Error: {e}"
