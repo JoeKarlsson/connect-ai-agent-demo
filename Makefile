@@ -38,6 +38,10 @@ demo:
 demo-auto:
 	$(BIN) demo.py --auto
 
+# Fast typing speed (good for rehearsal)
+demo-fast:
+	$(BIN) demo.py --fast
+
 # Remove venv and caches
 clean:
 	rm -rf $(VENV) __pycache__ *.pyc

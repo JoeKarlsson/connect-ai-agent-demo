@@ -51,7 +51,8 @@ make run      # interactive mode
 | `make check` | Verify all required credentials are present in `.env` |
 | `make run` | Launch interactive agent (type questions, `quit` to exit) |
 | `make demo` | Scripted 3-act demo — press Enter to advance between acts |
-| `make demo-auto` | Same demo, auto-advances without keypresses (good for recordings) |
+| `make demo-auto` | Auto-advances without keypresses (good for screen recordings) |
+| `make demo-fast` | Faster typing speed (good for rehearsal) |
 | `make clean` | Remove `.venv` and caches |
 
 ---
