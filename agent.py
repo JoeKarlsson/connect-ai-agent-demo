@@ -27,10 +27,11 @@ For GitHub use: GitHub1.GitHub.Repositories
 Use queryData to run SQL SELECT statements. Go directly to querying — do not call getCatalogs, getSchemas, or getTables unless the user asks about available data sources. Do not call getInstructions."""
 
 
-def run_query(user_query: str, mcp: ConnectAIMCPClient) -> str:
+def run_query(user_query: str, mcp: ConnectAIMCPClient, on_tool_call=None) -> str:
     """
     Execute a natural-language query against connected data sources.
     Returns the final text response from the agent.
+    on_tool_call: optional callback(tool_names: list[str]) called before each tool round.
     """
     tools = mcp.list_tools_for_anthropic()
     messages: list[dict] = [{"role": "user", "content": user_query}]
@@ -49,7 +50,8 @@ def run_query(user_query: str, mcp: ConnectAIMCPClient) -> str:
 
         if response.stop_reason == "tool_use":
             tool_names = [b.name for b in response.content if b.type == "tool_use"]
-            print(f"  → {', '.join(tool_names)}...", flush=True)
+            if on_tool_call:
+                on_tool_call(tool_names)
             tool_results = _execute_tool_calls(response.content, mcp)
             messages.append({"role": "assistant", "content": response.content})
             messages.append({"role": "user", "content": tool_results})

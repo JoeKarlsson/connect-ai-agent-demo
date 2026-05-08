@@ -2,79 +2,123 @@
 """
 Enterprise Data AI Agent — CData Connect AI Demo
 
-A natural-language interface to your enterprise data sources via CData Connect AI's
-managed MCP server. Built as part of a first-session developer experience audit.
-See docs/dx-audit.md for findings.
-
 Usage:
+    source .venv/bin/activate
     python main.py                  # interactive mode
     python main.py "your question"  # single query mode
 """
 import os
 import sys
 from dotenv import load_dotenv
+from rich.console import Console
+from rich.markdown import Markdown
+from rich.panel import Panel
+from rich.text import Text
+from rich.rule import Rule
+from rich import print as rprint
 
 load_dotenv()
+
+console = Console()
 
 
 def _get_required_env(key: str) -> str:
     value = os.environ.get(key)
     if not value:
-        print(f"Error: {key} is not set.")
-        print("Copy .env.example to .env and add your credentials.")
+        console.print(f"[red]Error:[/red] {key} is not set.")
+        console.print("Copy [bold].env.example[/bold] to [bold].env[/bold] and add your credentials.")
         sys.exit(1)
     return value
+
+
+def run_with_spinner(query: str, mcp) -> str:
+    from agent import run_query
+
+    tool_log = []
+
+    def on_tool_call(tool_names: list[str]):
+        label = ", ".join(tool_names)
+        tool_log.append(label)
+        console.print(f"  [dim]↳ {label}[/dim]")
+
+    with console.status("[bold cyan]Querying your data...[/bold cyan]", spinner="dots"):
+        # status context keeps the spinner running; tool calls print beneath it
+        pass
+
+    # Run outside status so tool prints aren't swallowed
+    return run_query(query, mcp, on_tool_call=on_tool_call)
+
+
+def ask(query: str, mcp) -> None:
+    from agent import run_query
+
+    console.print()
+
+    tool_calls_made = []
+
+    def on_tool_call(tool_names: list[str]):
+        label = ", ".join(tool_names)
+        tool_calls_made.append(label)
+        console.print(f"  [dim]↳ {label}[/dim]", highlight=False)
+
+    with console.status("[bold cyan]Querying your data...[/bold cyan]", spinner="dots"):
+        answer = run_query(query, mcp, on_tool_call=on_tool_call)
+
+    console.print()
+    console.print(Markdown(answer))
+    console.print()
 
 
 def main():
     email = _get_required_env("CDATA_EMAIL")
     token = _get_required_env("CDATA_ACCESS_TOKEN")
 
-    # Delay import so credential check happens before any SDK initialization
     from mcp_client import ConnectAIMCPClient
-    from agent import run_query
 
-    mcp = ConnectAIMCPClient(email, token)
+    with console.status("[dim]Connecting to CData Connect AI...[/dim]", spinner="dots"):
+        try:
+            mcp = ConnectAIMCPClient(email, token)
+            tools = mcp.list_tools()
+        except Exception as e:
+            console.print(f"[red]Connection failed:[/red] {e}")
+            console.print("Check your credentials and ensure you have at least one data source connected.")
+            sys.exit(1)
 
-    try:
-        tools = mcp.list_tools()
-    except Exception as e:
-        print(f"Failed to connect to CData Connect AI: {e}")
-        print("Check your credentials and ensure you have at least one data source connected.")
-        sys.exit(1)
+    console.print(
+        Panel(
+            f"[bold green]Connected[/bold green] — [cyan]{len(tools)} tools[/cyan] available from CData Connect AI\n"
+            "[dim]Sources: SalesPipeline (Google Sheets) · GitHub1 · SampleConnection1 (PostgreSQL) · SampleConnection2 (MySQL)[/dim]",
+            expand=False,
+        )
+    )
 
-    print(f"Connected — {len(tools)} tools available from CData Connect AI")
-
-    # Single query mode: python main.py "what are my top accounts?"
+    # Single query mode
     if len(sys.argv) > 1:
         query = " ".join(sys.argv[1:])
-        print("Thinking...", flush=True)
-        answer = run_query(query, mcp)
-        print(answer)
+        ask(query, mcp)
         return
 
     # Interactive mode
-    print("Ask anything about your connected data. Type 'quit' to exit.\n")
+    console.print("[dim]Ask anything about your connected data. Type [bold]quit[/bold] to exit.[/dim]\n")
+
     while True:
         try:
-            query = input("You: ").strip()
+            query = console.input("[bold cyan]You:[/bold cyan] ").strip()
         except (EOFError, KeyboardInterrupt):
-            print("\nExiting.")
+            console.print("\n[dim]Bye.[/dim]")
             break
 
         if query.lower() in ("quit", "exit", "q"):
+            console.print("[dim]Bye.[/dim]")
             break
 
         if not query:
             continue
 
         try:
-            print("Thinking...", flush=True)
-            answer = run_query(query, mcp)
+            ask(query, mcp)
         except Exception as e:
-            answer = f"Error: {e}"
-
-        print(f"\nAgent: {answer}\n")
+            console.print(f"[red]Error:[/red] {e}")
 
 
 if __name__ == "__main__":
