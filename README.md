@@ -1,87 +1,153 @@
 # Enterprise Data AI Agent
 
-A natural-language interface to enterprise data sources via [CData Connect AI's](https://connect.cdata.com) managed MCP server.
+A natural-language CLI agent for querying enterprise data via [CData Connect AI's](https://cloud.cdata.com) managed MCP server. Built as a first-session developer experience audit — I timed every step from zero to a working cross-source query, logged every friction point, and wrote up what I'd fix.
 
-Built as a first-session developer experience audit — I timed how long it took to get from zero to a working query, logged every friction point, and wrote up what I'd fix. Findings in [docs/dx-audit.md](docs/dx-audit.md).
+**Findings:** [docs/dx-audit.md](docs/dx-audit.md)  
+**Interview presentation outline:** [docs/presentation-structure.md](docs/presentation-structure.md)
+
+---
 
 ## What It Does
 
-Ask questions about your connected data in plain English. The agent routes your query through CData Connect AI's MCP server, which exposes 350+ data sources (Salesforce, QuickBooks, Google Sheets, etc.) through a consistent SQL-queryable interface.
+Ask questions in plain English. The agent routes queries through CData Connect AI's MCP server, which exposes 350+ data sources through a consistent SQL-queryable interface. No custom connectors. No per-source auth logic. Add a new source in the CData dashboard and it's immediately queryable — no code changes.
 
+**Connected sources in this demo:**
+- `SalesPipeline` — Google Sheets sales pipeline (20 opportunities, 4 reps, multi-region)
+- `GitHub1` — GitHub repos, commit activity, issues
+- `SampleConnection1` — PostgreSQL (Customers, Orders, StockItems)
+- `SampleConnection2` — MySQL (same schema, different connection)
+
+**Example queries:**
 ```
-You: What are my top 5 open opportunities by revenue?
-
-Agent: Here are your top 5 open opportunities:
-1. Acme Corp — $240,000 (Close date: 2026-06-15)
-2. ...
+What's my total pipeline value by stage?
+Who are my top 3 reps by open ARR?
+Show me my most recently updated GitHub repos.
+Cross-reference my top rep's deals with my public GitHub repos.
 ```
 
-The same agent works against any source you've connected in your CData account — no code changes required.
+---
 
-## Setup
+## Quick Start
 
-**Prerequisites:**
-- Python 3.11+
-- [CData Connect AI](https://connect.cdata.com) account (free Developer Edition)
-- At least one data source connected in your CData account
-- [Anthropic API key](https://console.anthropic.com)
+```bash
+make setup    # creates venv, installs deps, scaffolds .env
+```
 
-**1. Install dependencies**
+Then open `.env` and fill in your credentials (see [Credentials](#credentials) below), then:
+
+```bash
+make check    # verify all credentials are set
+make demo     # run the scripted 3-act demo
+make run      # interactive mode
+```
+
+---
+
+## All Make Commands
+
+| Command | What it does |
+|---|---|
+| `make setup` | Create venv, install dependencies, scaffold `.env` from `.env.example` |
+| `make check` | Verify all required credentials are present in `.env` |
+| `make run` | Launch interactive agent (type questions, `quit` to exit) |
+| `make demo` | Scripted 3-act demo — press Enter to advance between acts |
+| `make demo-auto` | Same demo, auto-advances without keypresses (good for recordings) |
+| `make clean` | Remove `.venv` and caches |
+
+---
+
+## Manual Setup (without Make)
 
 ```bash
 python3 -m venv .venv
-source .venv/bin/activate  # on Windows: .venv\Scripts\activate
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-```
-
-**2. Configure credentials**
-
-```bash
 cp .env.example .env
-```
-
-Edit `.env`:
-- `CDATA_EMAIL` — your CData account email
-- `CDATA_ACCESS_TOKEN` — generate a Personal Access Token from Settings → API Access Tokens in the CData dashboard
-- `ANTHROPIC_API_KEY` — your Anthropic API key
-
-**3. Run it**
-
-Activate the virtual environment first (required every new terminal session):
-```bash
-source .venv/bin/activate
-```
-
-Interactive mode:
-```bash
+# edit .env with your credentials
 python main.py
 ```
 
-Single query:
+> **Note:** `source .venv/bin/activate` is required each new terminal session. After activation, your prompt shows `(.venv)`.
+
+---
+
+## Credentials
+
+Three environment variables required in `.env`:
+
+| Variable | Where to get it |
+|---|---|
+| `CDATA_EMAIL` | The email address you used to sign up at [cloud.cdata.com](https://cloud.cdata.com) |
+| `CDATA_ACCESS_TOKEN` | CData dashboard → Settings (gear icon) → Access Tokens → Create PAT |
+| `ANTHROPIC_API_KEY` | [console.anthropic.com](https://console.anthropic.com) → API Keys |
+
+> **Auth gotcha:** The `CDATA_EMAIL` must match your CData account email exactly — not a work email alias. The MCP server returns `"Failed to authenticate token"` if the username is wrong, which doesn't hint that the email is the issue. See [docs/dx-audit.md](docs/dx-audit.md).
+
+---
+
+## Scripted Demo
+
+`demo.py` runs a three-act walkthrough:
+
+- **Act 1** — Single source: Google Sheets pipeline query (total ARR by stage, top reps)
+- **Act 2** — Second source: GitHub repos (different source type, same interface)
+- **Act 3** — Cross-source: connects both sources in one query (the "aha" moment)
+
+Queries are typed out character-by-character. Tool calls appear as dim progress lines. Results render as native terminal UI via `rich`.
+
 ```bash
-python main.py "show me all accounts created this month"
+make demo        # press Enter between acts — good for live presentations
+make demo-auto   # auto-advances — good for screen recordings
 ```
+
+---
 
 ## How It Works
 
 ```
-You → main.py → agent.py (Anthropic SDK) → mcp_client.py → CData MCP Server → your data source
+You → main.py → agent.py (Anthropic SDK tool use) → mcp_client.py → CData MCP Server → data source
 ```
 
-The MCP client connects to `https://mcp.cloud.cdata.com/mcp/` using Basic auth (email + PAT). It discovers the available tools from your connected sources, then passes them to Claude as tool definitions. Claude decides which tools to call based on your query, the MCP client executes them, and the results come back as a natural-language answer.
+**`mcp_client.py`** — direct HTTP client for the CData MCP server at `https://mcp.cloud.cdata.com/mcp/`. Uses JSON-RPC 2.0 with SSE responses. Basic auth with base64(`email:PAT`). No CData SDK — just `requests`.
 
-No custom connector code. No per-source auth logic. One agent that works against any of your connected sources.
+**`agent.py`** — agent loop using the standard Anthropic Python SDK. Claude receives available tools from the MCP server, decides which to call, and iterates until it has a complete answer. Uses `claude-sonnet-4-6`.
 
-## Implementation Notes
+**`main.py`** — CLI entry point with `rich` terminal UI: spinner, dim tool progress lines, native markdown rendering.
 
-`mcp_client.py` — direct HTTP client for the CData MCP server. Uses JSON-RPC 2.0 with SSE responses. No CData SDK required — just `requests`.
+**`demo.py`** — scripted walkthrough with typewriter effect and press-to-advance pacing.
 
-`agent.py` — agent loop using the standard Anthropic Python SDK. Tool use is handled manually (no agent framework) so the control flow is easy to follow and extend.
+---
 
-`main.py` — CLI entry point. Interactive and single-query modes.
+## Project Structure
 
-## What I Learned Building This
+```
+.
+├── main.py                          # interactive + single-query CLI
+├── demo.py                          # scripted 3-act demo
+├── agent.py                         # Anthropic SDK agent loop
+├── mcp_client.py                    # CData MCP HTTP client
+├── requirements.txt
+├── Makefile
+├── .env.example
+├── demo-data/
+│   └── pipeline.csv                 # sample sales pipeline data (load into Google Sheets)
+└── docs/
+    ├── dx-audit.md                  # first-session developer experience audit
+    ├── presentation-structure.md    # interview presentation outline
+    └── screenshots/
+        └── github-setup-guide-redundant-steps.png
+```
 
-See [docs/dx-audit.md](docs/dx-audit.md) for the full first-session experience audit, including time-to-first-API-call, every friction point I hit, and 5 specific DX improvements I'd prioritize.
+---
 
-The short version: the MCP path is genuinely fast to get running once you know where to find your PAT. The part that took longer than it should have was [fill in after your actual experience].
+## DX Audit Summary
+
+Built and audited during a single session. Key findings:
+
+1. **Wrong `Accept` header in all existing docs** — must be `application/json, text/event-stream`, not just `text/event-stream` (returns 406 otherwise)
+2. **Setup guide shows steps you already completed** — contextual help panel on the connection page shows navigation steps, not auth steps
+3. **Verbose schema metadata on every tool response** — bloats context, causes agents to appear hung on slower models
+4. **No terminal-first setup path** — OAuth and PAT generation require browser dashboard; breaks AI coding assistant workflows
+5. **Venv not mentioned in quickstart** — `ModuleNotFoundError` is the first thing new developers hit
+
+Full details and recommended fixes: [docs/dx-audit.md](docs/dx-audit.md)
