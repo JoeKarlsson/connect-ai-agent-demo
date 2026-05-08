@@ -1,0 +1,21 @@
+opportunity_name,account_name,industry,stage,arr_value,close_date,account_owner,region,source
+Acme Corp - Enterprise Expansion,Acme Corp,Manufacturing,Closed Won,120000,2026-01-15,Sarah Chen,North America,Inbound
+Bright Solutions - New Logo,Bright Solutions,Financial Services,Closed Won,85000,2026-01-28,Marcus Webb,EMEA,Outbound
+DataFirst Analytics - Platform,DataFirst Analytics,Technology,Negotiation,210000,2026-06-30,Sarah Chen,North America,Partner
+Summit Health - Integration,Summit Health,Healthcare,Proposal,95000,2026-07-15,Priya Nair,North America,Inbound
+Redwood Capital - AI Pilot,Redwood Capital,Financial Services,Discovery,175000,2026-08-01,Marcus Webb,North America,Outbound
+NovaTech Systems - Full Suite,NovaTech Systems,Technology,Closed Won,310000,2026-02-10,Sarah Chen,North America,Inbound
+Horizon Logistics - Upgrade,Horizon Logistics,Logistics,Negotiation,68000,2026-06-15,Jordan Park,APAC,Renewal
+Cascade Retail - Data Pipeline,Cascade Retail,Retail,Proposal,54000,2026-07-01,Priya Nair,North America,Inbound
+Vantage Energy - MCP Integration,Vantage Energy,Energy,Discovery,145000,2026-08-15,Sarah Chen,North America,Outbound
+BlueSky Insurance - Connect AI,BlueSky Insurance,Insurance,Closed Lost,92000,2026-03-01,Jordan Park,EMEA,Inbound
+Meridian Bank - Data Access,Meridian Bank,Financial Services,Negotiation,230000,2026-06-20,Marcus Webb,North America,Outbound
+Apex Manufacturing - ERP Connect,Apex Manufacturing,Manufacturing,Proposal,78000,2026-07-20,Priya Nair,North America,Partner
+Stellar Software - Dev Edition,Stellar Software,Technology,Closed Won,42000,2026-02-28,Jordan Park,APAC,Inbound
+Frontier Telecom - Pipeline,Frontier Telecom,Telecommunications,Discovery,188000,2026-09-01,Sarah Chen,EMEA,Outbound
+Crestview Hospital - Analytics,Crestview Hospital,Healthcare,Proposal,115000,2026-07-10,Marcus Webb,North America,Inbound
+Pinnacle Retail - Shopify Sync,Pinnacle Retail,Retail,Closed Won,37000,2026-03-15,Jordan Park,North America,Inbound
+Quantum Logistics - Real-Time,Quantum Logistics,Logistics,Negotiation,162000,2026-06-25,Priya Nair,APAC,Partner
+IronBridge Capital - Risk AI,IronBridge Capital,Financial Services,Discovery,290000,2026-09-15,Sarah Chen,North America,Outbound
+Clearwater Utilities - Connect,Clearwater Utilities,Energy,Closed Lost,73000,2026-04-01,Marcus Webb,North America,Inbound
+Nexus Pharma - Compliance AI,Nexus Pharma,Healthcare,Proposal,195000,2026-08-01,Jordan Park,EMEA,Outbound
