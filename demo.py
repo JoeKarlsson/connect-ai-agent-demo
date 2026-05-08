@@ -17,9 +17,6 @@ import os
 from dotenv import load_dotenv
 from rich.console import Console
 from rich.markdown import Markdown
-from rich.panel import Panel
-from rich.rule import Rule
-from rich.align import Align
 
 load_dotenv()
 
@@ -30,25 +27,14 @@ TYPE_SPEED = 0.018 if FAST else 0.042   # seconds per character
 
 DEMO_STEPS = [
     {
-        "act":      "Act 1 — Single Source",
-        "subtitle": "Querying a Google Sheets sales pipeline in plain English",
-        "comment":  "Connect to our sales pipeline — Google Sheets as the data source",
-        "command":  "python main.py \"What's my pipeline value by stage and who are the top reps?\"",
-        "query":    "What's my pipeline value by stage and who are the top reps?",
+        "comment": "what does the pipeline look like right now?",
+        "command": "python main.py \"What's my pipeline value by stage and who are the top reps?\"",
+        "query":   "What's my pipeline value by stage and who are the top reps?",
     },
     {
-        "act":      "Act 2 — Second Source",
-        "subtitle": "Same command. Completely different source type.",
-        "comment":  "Now query GitHub — same interface, zero code changes",
-        "command":  "python main.py \"Show me my GitHub repos updated in the last 60 days\"",
-        "query":    "Show me my GitHub repos updated in the last 60 days",
-    },
-    {
-        "act":      "Act 3 — Cross-Source Intelligence",
-        "subtitle": "One question. Two sources. No joins written by hand.",
-        "comment":  "Ask something that spans both sources at once",
-        "command":  "python main.py \"Who is my top sales rep and do I have GitHub repos relevant to their biggest deals?\"",
-        "query":    "Who is my top sales rep and do I have GitHub repos relevant to their biggest deals?",
+        "comment": "now pull in GitHub too — same command, both sources",
+        "command": "python main.py \"Who is my top sales rep, what are their biggest open deals, and do I have any GitHub repos relevant to those deals?\"",
+        "query":   "Who is my top sales rep, what are their biggest open deals, and do I have any GitHub repos relevant to those deals?",
     },
 ]
 
@@ -132,62 +118,25 @@ def main():
 
     from mcp_client import ConnectAIMCPClient
 
-    # Banner
-    console.print()
-    console.print(
-        Panel(
-            Align.center(
-                "[bold white]Enterprise Data AI Agent[/bold white]\n"
-                "[dim]CData Connect AI · MCP Server Demo[/dim]"
-            ),
-            border_style="cyan",
-            padding=(1, 6),
-        )
-    )
-    console.print()
-
-    # Connect
-    with console.status("[dim]Connecting...[/dim]", spinner="dots"):
+    with console.status("[dim]connecting...[/dim]", spinner="dots"):
         mcp = ConnectAIMCPClient(email, token)
-        tools = mcp.list_tools()
+        mcp.list_tools()
 
-    console.print(
-        f"  [green]✓[/green] [bold]{len(tools)} tools[/bold] available — "
-        "Google Sheets · GitHub · PostgreSQL · MySQL\n"
-    )
+    newline()
 
-    if not AUTO:
-        console.print("  [dim]Press Enter to start the demo...[/dim]", end="")
-    wait_for_enter()
-
-    # Acts
     for i, step in enumerate(DEMO_STEPS):
-        console.print()
-        console.print(Rule(f"[bold cyan]{step['act']}[/bold cyan]", style="dim cyan"))
-        console.print(f"  [dim]{step['subtitle']}[/dim]")
-        console.print()
-
         print_comment(step["comment"])
         print_command(step["command"])
         pause(0.6)
-
         run_step(step["query"], mcp)
 
         if i < len(DEMO_STEPS) - 1:
-            console.print()
+            newline()
             if not AUTO:
-                console.print("  [dim]Press Enter for next act...[/dim]", end="")
+                console.print("[dim]Press Enter to continue...[/dim]", end="")
             wait_for_enter()
 
-    # Close
-    console.print()
-    console.print(Rule(style="dim cyan"))
-    console.print(
-        Align.center(
-            "\n[bold green]✓ Demo complete[/bold green]\n"
-            "[dim]One MCP server. 350+ sources. No custom connectors.[/dim]\n"
-        )
-    )
+    newline()
 
 
 if __name__ == "__main__":
