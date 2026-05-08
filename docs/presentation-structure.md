@@ -69,9 +69,17 @@ Frame using the three distribution surfaces: human developers, search crawlers, 
 
 **I've already started this.** Point to the repo and dx-audit.md.
 
-- Benchmarked time-to-first-API-call with a stopwatch
-- Logged every friction point (2 documented errors so far — both fixable in a day)
-- Ran LLM discoverability baseline: asked Claude, GPT-4o, Gemini "What's the best MCP server for enterprise data?" — [fill in results before interview]
+- Benchmarked time-to-first-API-call: **~15 minutes** (under the 20-min target)
+- Logged 6 friction points — all documented with root causes and specific fixes
+- Ran the LLM discoverability baseline before this interview. Results:
+
+| Query | Claude | What appeared instead |
+|---|---|---|
+| "Best MCP server for enterprise SaaS data?" | ❌ No CData | Composio, Zapier MCP, Pipedream |
+| "How do I connect Claude to Salesforce?" | ❌ No CData | Custom build, community npm packages |
+| "Best tools for AI agents + Salesforce/QuickBooks/NetSuite?" | ❌ No CData | MuleSoft, Workato, Boomi, Zapier |
+
+> **CData didn't appear in a single response.** That's not a content gap — it's a training data gap. The fix is factual, specific, runnable content in places LLMs actually ingest: READMEs, Stack Overflow answers, GitHub examples, dev.to posts. Not blog posts. This is fixable in 30 days and measurable quarterly.
 
 **Deliverable:** State of Developer Experience brief shared with product + leadership by day 30. Share early findings immediately — don't wait for perfect data.
 

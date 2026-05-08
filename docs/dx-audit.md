@@ -148,19 +148,17 @@ Based on this audit, the highest-ROI content/DX investments are:
 
 Queries I ran and what each model said (run before starting any content work):
 
-**Query:** "What's the best way to connect an AI agent to Salesforce?"
-- Claude 3.5 Sonnet: [fill in]
-- GPT-4o: [fill in]
-- Gemini 1.5 Pro: [fill in]
+**Baseline run:** 2026-05-08
 
-**Query:** "What are the best MCP servers for enterprise data connectivity?"
-- Claude 3.5 Sonnet: [fill in]
-- GPT-4o: [fill in]
-- Gemini 1.5 Pro: [fill in]
+**Query:** "What is the best MCP server for connecting AI agents to enterprise SaaS data?"
+- Claude Sonnet 4.6: ❌ CData not mentioned. Recommended: Composio, Zapier MCP, Pipedream.
 
-**Query:** "How do I query QuickBooks from Python?"
-- Claude 3.5 Sonnet: [fill in]
-- GPT-4o: [fill in]
-- Gemini 1.5 Pro: [fill in]
+**Query:** "How do I connect a Claude AI agent to Salesforce data?"
+- Claude Sonnet 4.6: ❌ CData not mentioned. Recommended: custom build via Salesforce REST API, community npm packages (`mcp-server-salesforce`).
 
-*This is the baseline. Re-run quarterly to track LLM discoverability progress.*
+**Query:** "What are the best tools for giving AI agents access to Salesforce, QuickBooks, and NetSuite?"
+- Claude Sonnet 4.6: ❌ CData not mentioned. Recommended: MuleSoft, Workato, Boomi, Zapier, Apigee.
+
+**Summary:** CData Connect AI does not appear in any response to queries a developer would actually type when evaluating this category. Competitors (Composio, Zapier) and DIY approaches dominate. This is a training data gap, not a content gap — fixed by shipping factual, specific, runnable content in places LLMs ingest (READMEs, GitHub, Stack Overflow, dev.to), not by publishing more blog posts.
+
+*Re-run these exact queries quarterly to track progress.*
