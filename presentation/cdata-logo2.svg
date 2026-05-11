@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+
+<html class="no-js" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <title>File Not Found!</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords"     content="">
+    <meta name="description"  content="">
+    <meta name="viewport"     content="width=device-width, initial-scale=1">
+
+    <script src="https://cdn.bizible.com/scripts/bizible.js" async></script>
+
+    
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+
+    
+                    <link rel="canonical" href="https://www.cdata.com/errors/404.aspx">  
+
+
+<meta property="og:title" content="File Not Found!">
+<meta property="og:headline" content="File Not Found!">
+<meta property="og:description" content="">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.cdata.com/errors/404.aspx">
+  <meta property="og:image" content="https://www.cdata.com/ui/img/og-img-cdata-logo.png">
+<meta property="og:site_name" content="CData Software">
+<meta property="fb:app_id" content="495445000608064">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@cdatasoftware">
+<meta name="twitter:creator" content="@cdatasoftware">
+<meta name="twitter:title" content="File Not Found!">
+<meta name="twitter:description" content="">
+    <meta name="twitter:image" content="https://www.cdata.com/ui/img/og-img-cdata-logo.png"/>
+<meta name="twitter:domain" content="https://www.cdata.com/">
+
+    <script type="application/ld+json">
+    {	"@context" : "https://schema.org",
+	    "@type" : "WebSite",
+	    "name" : "CData Software",
+	    "alternateName" : "CData Software - The Leader In Data Connectivity",
+	    "url" : "https://www.cdata.com",
+	    "potentialAction": {
+         "@type": "SearchAction",
+         "target": "https://www.cdata.com/search/?q={search_term_string}",
+         "query-input": "required name=search_term_string"
+       }
+    }
+    </script>
+
+    <script>
+        /* Run all inine js code after page load completed */
+        var $rsbpage = {
+            funs: [],
+            glightboxFuns: [],
+            loadLightbox: false,
+            ready: function(inlineFun) {
+                $rsbpage.funs.push(inlineFun);
+            },
+            glightboxReady: function(func) {
+                $rsbpage.glightboxFuns.push(func);
+            },
+            yieldDeadline: 50,
+            lastYield: 0,
+            tryYield: async function(currentFunc) {
+                // maintain timer of deferred tasks and only yield when we have crossed into long-running task territory
+                const taskTime = performance.now() - $rsbpage.lastYield;
+                if (taskTime > $rsbpage.yieldDeadline) {
+                    await yieldToMain();
+                    console.log(`long-running task found! yield provided ($rsbpage.tryYield) --> task time: ${taskTime}`);
+                    $rsbpage.lastYield = performance.now();
+                   
+                    console.log(currentFunc);
+                }
+            },
+            run: async function() {
+            const length = $rsbpage.funs.length;
+            $rsbpage.lastYield = performance.now();
+                for(var i = 0; i < length; i++) {
+                    var registeredFunction = $rsbpage.funs[i];
+                    if(typeof registeredFunction === 'function') {
+                        await registeredFunction();
+                        await $rsbpage.tryYield(registeredFunction);
+                    }
+                }
+
+                await $rsbpage.executeDeferredGlightbox();
+            },
+            executeDeferredGlightbox: async function() {
+                if (!$rsbpage.loadLightbox || !$rsbpage.glightboxFuns?.length) {
+                    return;
+                }
+
+                const glightboxLength = $rsbpage.glightboxFuns.length;
+                let lightboxTimer;
+                lightboxTimer = setInterval(async function() {
+                    await $rsbpage.tryYield();
+                    if (window.GLightbox) {
+                        clearInterval(lightboxTimer);
+                        // lightbox has been loaded, time to execute any deferred code
+                        for (var i = 0; i < glightboxLength; i++) {
+                            const deferredLightbox = $rsbpage.glightboxFuns[i];
+                            if (typeof deferredLightbox === 'function') {
+                                await deferredLightbox();
+                                await $rsbpage.tryYield();
+                            }
+                        }
+                    }
+                }, 35);
+            },
+        };
+
+        //judge whether the current browser is a zh-cn version.
+        var isNotZH_CN = (navigator.language != undefined && "zh-cn" != navigator.language.toLowerCase()) ||  //Chrome
+        (navigator.browserLanguage != undefined && "zh-cn" != navigator.browserLanguage.toLowerCase());  //IE
+    </script>
+
+    
+        <link type='text/css' rel="stylesheet" href="/ui/css/lib/vendor-head.min.css">
+    
+    
+        <link type='text/css' rel="stylesheet" href="/ui/css/optimized/bundle.min.css?042826193722">
+        
+
+
+    
+    <link rel="preload" as="font" type="font/woff2" href="/ui/fonts/dm/DMSans[opsz,wght].woff2" crossorigin>
+
+    
+    <script src="/ui/js/dist/vendor-head.min.js" defer></script>
+
+    
+    <script src="/ui/js/dist/cdata-custom.min.js?040826182606" defer></script>
+
+
+    <script>
+        // Qualified (ensures we can use qualified JS object even on localhost or environments where Qualified isn't loaded)
+        (function(w,q){w['QualifiedObject']=q;w[q]=w[q]||function(){(w[q].q=w[q].q||[]).push(arguments)};})(window,'qualified')
+        // End Qualified
+
+        function saveQualifiedData(data) {
+            if (location.href.indexOf('.local') > -1) {
+                console.log('Saving Qualified form data', data);
+            }
+
+            qualified('saveFormData', data);
+            qualified('emitFormFill', 'custom');
+        }
+    </script>
+
+    
+    <style id="cloud-nav-preload">
+        #top-navigation-cloud { transform: translateY(-105%) !important; transition: none !important; }
+    </style>
+
+
+<meta name="cf:country" content="US"><meta name="cf:isEU" content="false"></head>
+
+<body onload="$rsbpage.run();" data-home-url="" data-home-abs-url="">
+
+    <header>
+        
+
+ 
+	<div class="site-nav panel-group" id="accordion" role="navigation"> 
+			<div class="container-fluid">
+			
+				<div class="row d-flex">
+					<div class="top-level-nav">
+						
+						<a href="/" aria-label="CData home" class="logo-wrapper" >
+							<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 346" width="116" height="23">
+								<path class="cls-1"
+									d="M597.62.95c95.21,0,172.33,77.21,172.33,172.33s-77.21,172.33-172.33,172.33h-188.9V.95h188.9ZM483.52,280.44h114.09c56.66,0,102.65-50.45,102.65-107.15s-45.95-107.33-102.65-107.33h-114.09v214.48Z" fill="currentColor" />
+								<path class="cls-1"
+									d="M1167.43,345.61h-80.55l-21.47-65.18h-193.74l-21.19,65.18h-80.55L890.13.95h156.01l121.29,344.66ZM893.05,215.26h150.83l-49.11-149.31h-53.35l-48.37,149.31Z" fill="currentColor" />
+								<path class="cls-1"
+									d="M1800,345.61h-80.55l-21.47-65.18h-193.74l-21.19,65.18h-80.55L1522.7.95h156.01l121.29,344.66ZM1525.62,215.26h150.83l-49.11-149.31h-53.35l-48.38,149.31Z" fill="currentColor" />
+								<path class="cls-1" d="M1450.82,65.95h-127.8v279.09h-75.91V65.95h-127.8V.38h331.5v65.57Z" fill="currentColor" />
+								<path class="cls-1"
+									d="M167.19,65.96h177.65V.78H0v344.84h344.84v-65.18h-177.65c-59.24,0-107.24-48.02-107.24-107.24s48.01-107.24,107.24-107.24Z" fill="currentColor" />
+							</svg>
+							
+						</a>
+						<button id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-nav-items">
+</button>
+
+						<div class="nav-items">
+							<div class="nav-items-wrapper">
+								
+								<div class="hidden-md hidden-lg mobile-nav-items"  id="mobile-nav-items">
+									<div class="panel panel-default">
+										<div class="panel-heading" id="platformHeading">
+											<a class="panel-title" role="button" data-toggle="collapse" data-parent="#accordion" href="#platformCollapse" aria-expanded="false" aria-controls="platformCollapse">Platform</a>
+										</div>
+										<div id="platformCollapse" class="panel-collapse collapse" role="region" aria-labelledby="platformHeading">
+											<div class="panel-body" id="platform-panel-body"><div class="second-level" data-item="products">
+	<div class="container-fluid">
+		<div class="level-two-wrapper tabSections">
+            <div>
+                <div class="second-level-inner">
+                    <div class="second-level-full tabs">
+                        
+						<a class='leftCatMain menu-connectivity menuTab-directLink-desktop' href="/drivers/">
+                            Connectivity
+                        </a>
+                        <a class='leftCatMain menu-data-integration menuTab-directLink-desktop' href="/sync/">
+                            Data Integration
+                        </a>
+                        <a class='leftCatMain menu-embedded-connectivity menuTab-directLink-desktop' href="/embed/">
+                            Embed
+                        </a>
+                         <a href='/ai/' class='leftCatMain direct'>
+                            CData Connect AI
+                        </a>
+                    </div>
+                </div>
+            </div>
+           
+			<div class="tabSectionPane products products-cat menu-connectivity-child" style="display: none;">
+				<a class="backLink"><i class="fa-sharp fa-regular fa-chevron-left fa-xs"></i> Back</a>
+                <div class="second-level-inner">
+                    <div class="second-level-full products">
+					
+						<div class="l2-section menuGrid connectivityGrid">
+							<span class="l2-section-title col1Head">For Data Development, Integration & Engineering</span>
+							
+							
+							<div class="col1Items">
+								<a href="/odbc/">ODBC Drivers</a>
+								<a href="/jdbc/">JDBC Drivers</a>
+								<a href="/ado/">ADO.NET Providers</a>
+								<a href="/ssis/">SSIS Tasks & Components</a>
+								<a href="/python/">Python Connectors</a>
+							</div>
+							<span class="l2-section-title col2Head">For Business Intelligence & Data Analysis</span>
+							<div class="col2Items">
+								<a href="/tableau/">Tableau Connectors</a>
+								<a href="/ai/spreadsheets/">Spreadsheets Connectivity</a>
+								<a href="/powerbi/">Power BI Connectors</a>
+							</div>
+							<span class="l2-section-title col3Head">For API Developers</span>
+							<div class="col3Items">
+								<a href="/apiserver/">CData API Server
+								</a>
+							</div>
+						</div>
+						
+                        
+                    </div>
+                    
+                </div>
+				
+
+                <div class="second-level-inner divider">
+					<div class="second-level-full products">		
+						<div class="l2-section menuGrid gridTwo connectivity">
+							<span class="l2-section-title">Most Popular Sources</span>
+							<a href="/drivers/snowflake/" class="menuSourceIcon"><i class="snowflake"></i>Snowflake</a>
+							<a href="/drivers/databricks/" class="menuSourceIcon"><i class="databricks"></i>Databricks</a>
+							<a href="/drivers/salesforce/" class="menuSourceIcon"><i class="salesforce"></i>Salesforce</a>
+							<a href="/drivers/workday/" class="menuSourceIcon"><i class="workday"></i>Workday</a>
+							<a href="/drivers/bigquery/" class="menuSourceIcon"><i class="bigquery"></i>BigQuery</a>
+							<a href="/drivers/dataverse/" class="menuSourceIcon"><i class="dataverse"></i>Dataverse </a>
+							<a href="/drivers/dynamics365/" class="menuSourceIcon"><i class="dynamics365"></i>Dynamics 365 </a>
+							<a href="/drivers/odata/" class="menuSourceIcon"><i class="odata"></i>OData </a>
+							<a href="/drivers/mongodb/" class="menuSourceIcon"><i class="mongodb"></i>MongoDB </a>
+							<a href="/drivers/sap/" class="menuSourceIcon"><i class="sap"></i>SAP</a>
+							<a href="/drivers/netsuite/" class="menuSourceIcon"><i class="netsuite"></i>NetSuite</a>
+							<a href="/drivers/smartsheet/" class="menuSourceIcon"><i class="smartsheet"></i>Smartsheet </a>
+							<a href="/drivers/jira/" class="menuSourceIcon"><i class="jira"></i>Jira </a>
+							<a href="/drivers/sharepoint/" class="menuSourceIcon"><i class="sharepoint"></i>SharePoint </a>
+							<a href="/drivers/intacct/" class="menuSourceIcon"><i class="sageintacct"></i>Sage Intacct </a>
+							
+							<a href="/drivers/" class="simple arrow simple-brand-depth">View all
+							</a>
+						</div>
+					</div>
+					
+				</div>
+            </div>
+			<div class="tabSectionPane products products-cat menu-data-integration-child" style="display: none;">
+				<a class="backLink"><i class="fa-sharp fa-regular fa-chevron-left fa-xs"></i> Back</a>
+                <div class="second-level-inner">
+                    
+                    <div class="second-level-full products">
+						<div class="row d-flex">
+							<div class="cols-6-lg">
+								<div class="l2-section overview">
+									<span class="body-l margin-bottom-24">CData's data integration solutions provide flexible deployment options across data
+										movement and live connectivity through Sync, Arc, and Connect AI. </span>
+									<div>
+										<a href="/sync/" class="btn arrow btn-dark">Learn more
+										</a>
+									</div>
+						
+								</div>
+							</div>
+							<div class="cols-6-lg">
+								<div class="l2-section menuGrid">
+									<span class="l2-section-title no-p-top">Data Movement</span>
+									<a href="/sync/">ETL/ELT/Reverse ETL
+										<span>CData Sync</span>
+									</a>
+									<a href="https://arc.cdata.com/" target="_blank">EDI & MFT
+										<span>CData Arc</span>
+									</a>
+									<a href="/dbamp/" target="_blank">Salesforce/SQL Server
+										<span>CData DBAmp</span>
+									</a>
+								</div>
+							
+								<div class="l2-section menuGrid">
+									<span class="l2-section-title">Live Connectivity</span>
+									<a href="/ai/">Managed MCP Platform
+										<span>CData Connect AI</span>
+									</a>
+							
+								</div>
+							</div>
+						</div>
+						
+						
+					</div>
+					
+                </div>
+                <div class="second-level-inner divider">
+					
+					<div class="second-level-full products">		
+						<div class="l2-section highlight bracket-box bracket-box--resolve bracket-box--menu">
+
+<span class="bracket bracket--left" aria-hidden="true"></span>
+	<div class="bracket-content">
+
+<img src="/ui/img/news/gartner-logo.svg" alt="Gartner Magic Quadrant" class="img-responsive mb-1" loading="lazy" >
+<div>
+    
+    <span class="highlight-copy">CData's inclusion in the 2025 report underscores the growing recognition of our innovative solutions and our ability to address the evolving demands of modern data integration. </span>
+</div>
+<a href="/lp/gartner-magic-quadrant-data-integration-2025/" class="simple arrow simple-brand-agility" >Get the report </a>
+</div>
+<span class="bracket bracket--right" aria-hidden="true"></span>
+							
+							
+						</div>
+					</div>
+					
+				</div>
+            </div>
+			<div class="tabSectionPane products products-cat menu-embedded-connectivity-child" style="display: none;">
+				<a class="backLink"><i class="fa-sharp fa-regular fa-chevron-left fa-xs"></i> Back</a>
+                <div class="second-level-inner">
+                    
+					<div class="second-level-full products">
+						<div class="row d-flex">
+							<div class="cols-6-lg">
+								<div class="l2-section overview">
+									
+									<span class="body-l margin-bottom-24">Software providers can embed enterprise-grade connectivity to 350+ systems directly inside
+										their products. </span>
+									<div>
+										<a href="/embed/" class="btn arrow btn-dark">Learn more
+										</a>
+									</div>
+							
+								</div>
+							</div>
+							<div class="cols-6-lg">
+								<div class="l2-section menuGrid">
+									<span class="l2-section-title no-p-top">CData Embed</span>
+									<a href="/embed/ai-agent-connectivity/">AI and agent connectivity
+										<span>Ship AI features that can reason and act on real customer sources</span>
+									</a>
+									<a href="/embed/product-integration/">Product integrations
+										<span>Deliver customer-facing features that operate on live customer data</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						
+					</div>
+                </div>
+                <div class="second-level-inner divider">
+					
+					<div class="second-level-full products">		
+						<div class="l2-section highlight bracket-box bracket-box--resolve bracket-box--menu">
+
+<span class="bracket bracket--left" aria-hidden="true"></span>
+	<div class="bracket-content">
+
+<img src="/ui/img/news/cdata_palantir_pr.svg" alt="Palantir Expands CData Partnership" class="img-responsive mb-1" loading="lazy" >
+<div>
+    
+    <span class="highlight-copy">Palantir Technologies has expanded its relationship with CData's Embedded business unit to enhance data connectivity in Palantir Foundry, enabling users to connect to hundreds of data sources through CData's embedded connectors. </span>
+</div>
+<a href="/company/press/cdata-announces-extended-relationship-with-palantir/" class="simple arrow simple-brand-agility" >Read more </a>
+</div>
+<span class="bracket bracket--right" aria-hidden="true"></span>
+							
+						</div>
+					</div>
+				</div>
+            </div>
+			
+			
+		</div>
+	</div>
+</div>
+
+
+											</div>
+										</div>
+									</div>
+									<div class="panel panel-default">
+										<div class="panel-heading" id="solutionsHeading">
+											<a class="panel-title" role="button" data-toggle="collapse" data-parent="#accordion" href="#solutionsCollapse" aria-expanded="false" aria-controls="solutionsCollapse">Solutions</a>
+										</div>
+										<div id="solutionsCollapse" class="panel-collapse collapse" role="region" aria-labelledby="solutionsHeading">
+											<div class="panel-body" id="solutions-panel-body"><div class="second-level" data-item="solutions">
+ <div class="container-fluid">
+  <div class="level-two-wrapper tabSections">
+   <div>
+    <div class="second-level-inner">
+     <div class="second-level-full tabs">
+      <a class='leftCatMain menu-data-platform'>
+        By AI & Data Platform
+       </a>
+      <a class='leftCatMain menu-use-case'>
+        By Use Case & Department
+       </a> 
+      
+       
+       
+        <a class='leftCatMain menu-customers'>         
+        Customers
+       </a>
+       <a href='/partner/' class='leftCatMain direct'>         
+        Partner
+       </a>
+      
+     </div>
+     
+    </div>
+   </div>
+
+   <div class="tabSectionPane solutions-cat menu-use-case-child" style="display: none;">
+    <a class="backLink"><i class="fa-sharp fa-regular fa-chevron-left fa-xs"></i> Back</a>
+    <div class="second-level-inner">
+  
+     <div class="second-level-full">
+      <div class="row d-flex">
+        <div class="cols-6-sm">
+          <div class="l2-section menuGrid">
+           <span class="l2-section-title">Use Cases</span>
+           <a href="/solutions/connectivity/">Data Connectivity</a>
+           <a href="/solutions/bi/">BI & Analytics</a>
+           <a href="/solutions/dv/">Enterprise Integration</a>
+           <a href="/solutions/workday/">Workday Integration</a>
+           <a href="/solutions/salesforce/">Salesforce Integration</a>
+           
+           
+           
+           <a href="/platform/data-mesh/">Data Mesh </a>
+          </div>
+        </div>
+
+        <div class="cols-6-sm">
+          <div class="l2-section menuGrid">
+            <span class="l2-section-title">Departments</span>
+            <a href="/solutions/martech/">Marketing</a>
+            <a href="/solutions/salesops/">Sales</a>
+            <a href="/solutions/accounting/">Finance & Accounting</a>
+          </div>
+        </div>
+      </div>
+     </div>
+    </div>
+    <div class="second-level-inner divider">
+      <div class="second-level-full">  
+      <div class="l2-section highlight bracket-box bracket-box--resolve bracket-box--menu">
+       
+
+<span class="bracket bracket--left" aria-hidden="true"></span>
+	<div class="bracket-content">
+
+<img src="/ui/brand-assets/logos/products/connectai/connect-ai-logo-agility-clarity.svg" alt="Vibe Query" class="img-responsive mb-1" loading="lazy" >
+<div>
+    
+    <span class="highlight-copy">Sign up for our limited series covering useful prompts, tips, and future CData MCP releases that will make Claude your undisputed work bestie. </span>
+</div>
+<a href="/ai/vibe-query/" class="simple arrow simple-brand-agility" >Learn more </a>
+</div>
+<span class="bracket bracket--right" aria-hidden="true"></span>
+       
+      </div>
+     </div> 
+    </div>
+   </div>
+
+   <div class="tabSectionPane solutions-cat menu-data-platform-child" style="display: none;">
+    <a class="backLink"><i class="fa-sharp fa-regular fa-chevron-left fa-xs"></i> Back</a>
+    <div class="second-level-inner">
+  
+     <div class="second-level-full">
+      <div class="row d-flex">
+         <div class="cols-6-sm">
+          <div class="l2-section menuGrid">
+        <span class="l2-section-title">AI</span>
+        <a href="/ai/integrations/anthropic/" class="menuSourceIcon"><i class="anthropic"></i>Anthropic</a>
+        <a href="/ai/integrations/databricks/" class="menuSourceIcon"><i class="databricks"></i>Databricks Agent Bricks</a>
+        <a href="/ai/integrations/google/" class="menuSourceIcon"><i class="google"></i>Google</a>
+        <a href="/ai/integrations/microsoft/" class="menuSourceIcon"><i class="microsoft"></i>Microsoft</a>
+        <a href="/ai/integrations/n8n/" class="menuSourceIcon"><i class="n8n"></i>n8n</a>
+        <a href="/ai/integrations/openai/" class="menuSourceIcon"><i class="openai"></i>OpenAI</a>
+      </div>
+         </div>
+          <div class="cols-6-sm">
+            <div class="l2-section menuGrid">
+        <span class="l2-section-title">Data Platforms</span>
+        <a href="/solutions/microsoft-fabric-integration/" class="menuSourceIcon"><i class="fabric"></i>Microsoft Fabric</a>
+        <a href="/solutions/snowflake/" class="menuSourceIcon"><i class="snowflake"></i>Snowflake</a>
+        <a href="/solutions/aws/" class="menuSourceIcon"><i class="aws"></i>AWS</a>
+        <a href="/solutions/databricks/" class="menuSourceIcon"><i class="databricks"></i>Databricks</a>
+        
+      </div>
+          </div>
+        </div>
+
+      
+      
+
+      
+     </div>
+    </div>
+    <div class="second-level-inner divider">
+     <div class="second-level-full">  
+      <div class="l2-section highlight bracket-box bracket-box--resolve bracket-box--menu">
+
+<span class="bracket bracket--left" aria-hidden="true"></span>
+	<div class="bracket-content">
+
+<img src="/ui/img/news/cdata_microsoft_pr.svg" alt="CData Collaborates with Microsoft" class="img-responsive mb-1" loading="lazy" >
+<div>
+    
+    <span class="highlight-copy">CData's Connect AI platform brings MCP connectivity to Microsoft Copilot Studio and Microsoft Agent 365. </span>
+</div>
+<a href="/company/press/cdata-microsoft-enterprise-ai-agents-mcp-integration/" class="simple arrow simple-brand-agility" >Read more </a>
+</div>
+<span class="bracket bracket--right" aria-hidden="true"></span>
+       
+      </div>
+     </div> 
+    </div>
+   </div>
+
+   
+
+   
+   <div class="tabSectionPane oneCol solutions-cat menu-customers-child" style="display: none;">
+    <a class="backLink"><i class="fa-sharp fa-regular fa-chevron-left fa-xs"></i> Back</a>
+    <div class="second-level-inner">
+  
+     <div class="second-level-full">
+      
+      <div class="l2-section menuGrid gridTwo">
+       
+       <span class="l2-section-title">Featured Case Studies</span>
+							<a href="/case-study/gsk/" class="menuCaseIcon"><i class="gsk"></i>GSK</a>
+							<a href="/case-study/uipath/" class="menuCaseIcon"><i class="uipath"></i>UiPath</a>
+							<a href="/case-study/partnerre/" class="menuCaseIcon"><i class="partnerre"></i>PartnerRe</a>
+							<a href="/case-study/scorpion/" class="menuCaseIcon"><i class="scorpion"></i>Scorpion</a>
+							<a href="/case-study/holiday-inn-club/" class="menuCaseIcon"><i class="holidayinn"></i>Holiday Inn Club Vacations</a>
+							<a href="/case-study/santa-clara-university/" class="menuCaseIcon"><i class="santaclara"></i>Santa Clara University </a>
+							<a href="/case-study/officedepot/" class="menuCaseIcon"><i class="officedepot"></i>Office Depot </a>
+							<a href="/case-study/nintex/" class="menuCaseIcon"><i class="nintex"></i>Nintex </a>
+							<a href="/case-study/ellie-ai/" class="menuCaseIcon"><i class="ellieai"></i>Ellie.ai </a>
+							<a href="/case-study/commando/" class="menuCaseIcon"><i class="commando"></i>Commando</a>
+							
+						
+							<div class="padding-top-16"><a href="/case-study/" class="btn arrow btn-dark">View all</a></div>
+      </div>
+
+      
+     </div>
+    </div>
+    <div class="second-level-inner">
+     
+    </div>
+   </div>
+   
+   
+  </div>
+ </div>
+</div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="panel panel-default">
+										<div class="panel-heading" id="developersHeading">
+											<a class="panel-title" role="button" data-toggle="collapse" data-parent="#accordion" href="#developersCollapse" aria-expanded="false" aria-controls="developersCollapse">Developers</a>
+										</div>
+										<div id="developersCollapse" class="panel-collapse collapse" role="region" aria-labelledby="developersHeading">
+											<div class="panel-body" id="developers-panel-body"><div class="second-level" data-item="developers">
+	<div class="container-fluid">
+		<div class="row d-flex h-100">
+			
+
+			<div class="cols-8-lg">
+				<div class="second-level-inner">
+		
+					<div class="second-level-full">
+						<div class="row d-flex">
+							<div class="cols-5-md">
+								<div class="l2-section overview nonTab">
+							
+									<span class="body-l margin-bottom-24">Access comprehensive tools, SDKs, and resources to integrate CData connectivity solutions
+										into your applications with enterprise-grade data drivers and APIs. </span>
+									<div>
+										<a href="/developers/" class="btn arrow btn-dark">Learn more
+										</a>
+									</div>
+							
+								</div>
+							</div>
+							<div class="cols-7-md">
+								<div class="l2-section menuGrid nonTab">
+									<span class="l2-section-title no-p-top">For Developers</span>
+									<a href="/developers/ai/">AI / MCP
+										<span>Build with fully-managed MCP servers to connect AI tools with your data.</span>
+									</a>
+									<a href="/developers/dot-net/">.NET
+										<span>Use standard ADO.NET Providers to build connected .NET apps</span>
+									</a>
+									<a href="/developers/python/">Python
+										<span>Use DB-API modules to work with data in Python</span>
+									</a>
+									<a href="/developers/java/">Java
+										<span>Use standard JDBC Drivers to build connected Java apps</span>
+									</a>
+									<a href="/developers/sql/">SQL
+										<span>Use standard SQL to integrate data with SQL Server</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						
+
+						
+					</div>
+					
+                    
+				</div>
+			</div>
+			<div class="cols-4-lg">
+				<div class="second-level-inner divider">
+					<div class="second-level-full">		
+						<div class="l2-section highlight bracket-box bracket-box--resolve bracket-box--menu nonTab">
+
+<span class="bracket bracket--left" aria-hidden="true"></span>
+	<div class="bracket-content">
+
+<img src="/ui/img/news/cdata-community.svg" alt="CData Community Empowers Developers" class="img-responsive mb-1" loading="lazy" >
+<div>
+    
+    <span class="highlight-copy">CData's developer community connects thousands of data professionals who share solutions, best practices, and expertise for integrating enterprise data sources through collaborative forums and comprehensive resources. </span>
+</div>
+<a href="https://community.cdata.com/" class="simple arrow simple-brand-agility" target=_blank>Join the community </a>
+</div>
+<span class="bracket bracket--right" aria-hidden="true"></span>
+							
+						</div>
+					</div>
+					
+					
+                    
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+											</div>
+										</div>
+									</div>
+									<div class="panel panel-default">
+										<div class="panel-heading" id="embedHeading">
+											<a class="panel-title" role="button" data-toggle="collapse" data-parent="#accordion" href="#embedCollapse" aria-expanded="false" aria-controls="embedCollapse">Embed</a>
+										</div>
+										<div id="embedCollapse" class="panel-collapse collapse" role="region" aria-labelledby="embedHeading">
+											<div class="panel-body" id="embed-panel-body"><div class="second-level" data-item="embed">
+	<div class="container-fluid">
+		<div class="row d-flex h-100">
+			
+
+			<div class="cols-8-lg">
+				<div class="second-level-inner">
+		
+					<div class="second-level-full">
+						<div class="row d-flex">
+							<div class="cols-6-md">
+								<div class="l2-section overview nonTab">
+							
+									<span class="body-l margin-bottom-24">Software providers can embed enterprise-grade connectivity to 350+ systems directly inside their products. </span>
+									<div>
+										<a href="/embed/" class="btn arrow btn-dark">Learn more
+										</a>
+									</div>
+							
+								</div>
+							</div>
+							<div class="cols-6-md">
+								<div class="l2-section menuGrid">
+									<span class="l2-section-title no-p-top">CData Embed</span>
+									<a href="/embed/ai-agent-connectivity/">AI and agent connectivity
+										<span>Ship AI features that can reason and act on real customer sources</span>
+									</a>
+									<a href="/embed/product-integration/">Product integrations
+										<span>Deliver customer-facing features that operate on live customer data</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						
+
+						
+					</div>
+					
+                    
+				</div>
+			</div>
+			<div class="cols-4-lg">
+				<div class="second-level-inner divider">
+					<div class="second-level-full">		
+						<div class="l2-section highlight bracket-box bracket-box--resolve bracket-box--menu nonTab">
+							<span class="bracket bracket--left" aria-hidden="true"></span>
+							<div class="bracket-content">
+						
+								<img src="/ui/img/news/cdata_reports_lockup.svg" alt="CData | Reports" class="img-responsive mb-1" loading="lazy">
+								<div>
+									<span class="l2-highlight-title">State of AI Data Connectivity Report: 2026 Outlook</span>
+									<span class="highlight-copy">Based on research with 200+ data & AI leaders and insights from AI pioneers at Microsoft and AWS, this report is the first to examine how data integration maturity drives AI success.</span>
+								</div>
+								<a href="/lp/ai-data-connectivity-report-2026/" class="simple arrow simple-brand-agility">Get the report</a>
+							</div>
+							<span class="bracket bracket--right" aria-hidden="true"></span>
+						
+						</div>
+					</div>
+					
+					
+                    
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="panel panel-default">
+										<div class="panel-heading" id="resourcesHeading">
+											<a class="panel-title" role="button" data-toggle="collapse" data-parent="#accordion" href="#resourcesCollapse" aria-expanded="false" aria-controls="resourcesCollapse">Resources</a>
+										</div>
+										<div id="resourcesCollapse" class="panel-collapse collapse" role="region" aria-labelledby="resourcesHeading">
+											<div class="panel-body" id="resources-panel-body"><div class="second-level" data-item="resources">
+	<div class="container-fluid">
+		<div class="row d-flex h-100">
+			
+
+			<div class="cols-8-lg">
+				<div class="second-level-inner">
+		
+					<div class="second-level-full">
+                        <div class="row d-flex">
+                            <div class="cols-4-md cols-6-sm">
+                                <div class="l2-section menuGrid nonTab">
+                                    <span class="l2-section-title">Explore</span>
+                                    <a href="/blog/">Blog
+                                    </a>
+                                    <a href="/case-study/">Case Studies</a>
+                                    <a href="/resources/#analyst-reports">Analyst Reports
+                                    </a>
+                                    <a href="/resources/">Content Hub
+                                    </a>
+                                
+                                </div>
+                            </div>
+                            <div class="cols-4-md cols-6-sm">
+                                <div class="l2-section menuGrid nonTab">
+                                    <span class="l2-section-title">Engage</span>
+                                    <a href="https://community.cdata.com/?utm_source=cdata&utm_medium=referral" target="_blank">Community
+                                    </a>
+                                    <a href="/events/">Events
+                                    </a>
+                                    <a href="/company/newsroom/">Newsroom
+                                    </a>
+                                    <a href="/events/foundations-2025/">Foundations Conference
+                                    </a>
+                                
+                                </div>
+                            </div>
+                            <div class="cols-4-md cols-6-sm">
+                                <div class="l2-section menuGrid nonTab">
+                                    <span class="l2-section-title">Support & Services</span>
+                                    <a href="/support/">Support Center
+                                    </a>
+                                    <a href="/kb/">Knowledge Base
+                                    </a>
+                                    <a href="/kb/help/">Product Documentation
+                                    </a>
+                                    <a href="https://portal.cdata.com/?a=subscription">Subscription Manager
+                                    </a>
+                                
+                                </div>
+                            </div>
+                        </div>
+						
+						
+
+						
+					</div>
+					
+                    
+				</div>
+			</div>
+			<div class="cols-4-lg">
+				<div class="second-level-inner divider">
+					<div class="second-level-full">		
+						<div class="l2-section highlight bracket-box bracket-box--resolve bracket-box--menu nonTab">
+
+<span class="bracket bracket--left" aria-hidden="true"></span>
+	<div class="bracket-content">
+
+<img src="/ui/img/news/foundations-2025.svg" alt="Foundations 2025" class="img-responsive mb-1" loading="lazy" >
+<div>
+    
+    <span class="highlight-copy">Join data leaders, AI innovators, and CData experts to explore the future of enterprise data infrastructure. Discover how to build AI-ready foundations, deploy intelligent agents, and transform your organization's data strategy. </span>
+</div>
+<a href="/events/foundations-2025/" class="simple arrow simple-brand-agility" >Watch now on demand </a>
+</div>
+<span class="bracket bracket--right" aria-hidden="true"></span>
+							
+						</div>
+					</div>
+					
+					
+                    
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+											</div>
+										</div>
+									</div>
+									  <div class="panel panel-default">
+										<div class="panel-heading" >
+											<a class="panel-title" href="/ai/">CData for AI</a>
+										</div>
+										
+									</div>
+								</div>
+								
+								<ul class="top-level hidden-xs hidden-sm">
+									<li><a data-item="products" class="has-children" aria-haspopup="true" aria-expanded="false"><span>Platform</span></a></li>
+									<li><a data-item="solutions" class="has-children" aria-haspopup="true" aria-expanded="false"><span>Solutions</span></a></li>
+									<li><a data-item="developers" class="has-children" href="/developers/" aria-haspopup="true" aria-expanded="false"><span>Developers</span></a></li>
+									<li><a data-item="embed" class="has-children"  href="/embed/" aria-haspopup="true" aria-expanded="false"><span>Embed</span></a></li>
+									
+									<li><a data-item="resources" class="has-children" href="/resources/" aria-haspopup="true" aria-expanded="false"><span>Resources</span></a></li>
+									<li><a class="no-children" href="/ai/">CData for AI</a></li>
+									 
+								</ul>
+							</div>
+						</div>
+						<div class="contact-info show-for-mobile">
+							<a href="/search/" class="search">Search</a>
+							<button onclick="return openChat();" class="btn arrow me-0 white-arrow text-transform-none no-margin-x">Let's Chat</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		
+		<div class="level-2-nav hidden-xs hidden-sm" id="level-2-nav" aria-hidden="true"><div class="second-level" data-item="products">
+	<div class="container-fluid">
+		<div class="level-two-wrapper tabSections">
+            <div>
+                <div class="second-level-inner">
+                    <div class="second-level-full tabs">
+                        
+						<a class='leftCatMain menu-connectivity menuTab-directLink-desktop' href="/drivers/">
+                            Connectivity
+                        </a>
+                        <a class='leftCatMain menu-data-integration menuTab-directLink-desktop' href="/sync/">
+                            Data Integration
+                        </a>
+                        <a class='leftCatMain menu-embedded-connectivity menuTab-directLink-desktop' href="/embed/">
+                            Embed
+                        </a>
+                         <a href='/ai/' class='leftCatMain direct'>
+                            CData Connect AI
+                        </a>
+                    </div>
+                </div>
+            </div>
+           
+			<div class="tabSectionPane products products-cat menu-connectivity-child" style="display: none;">
+				<a class="backLink"><i class="fa-sharp fa-regular fa-chevron-left fa-xs"></i> Back</a>
+                <div class="second-level-inner">
+                    <div class="second-level-full products">
+					
+						<div class="l2-section menuGrid connectivityGrid">
+							<span class="l2-section-title col1Head">For Data Development, Integration & Engineering</span>
+							
+							
+							<div class="col1Items">
+								<a href="/odbc/">ODBC Drivers</a>
+								<a href="/jdbc/">JDBC Drivers</a>
+								<a href="/ado/">ADO.NET Providers</a>
+								<a href="/ssis/">SSIS Tasks & Components</a>
+								<a href="/python/">Python Connectors</a>
+							</div>
+							<span class="l2-section-title col2Head">For Business Intelligence & Data Analysis</span>
+							<div class="col2Items">
+								<a href="/tableau/">Tableau Connectors</a>
+								<a href="/ai/spreadsheets/">Spreadsheets Connectivity</a>
+								<a href="/powerbi/">Power BI Connectors</a>
+							</div>
+							<span class="l2-section-title col3Head">For API Developers</span>
+							<div class="col3Items">
+								<a href="/apiserver/">CData API Server
+								</a>
+							</div>
+						</div>
+						
+                        
+                    </div>
+                    
+                </div>
+				
+
+                <div class="second-level-inner divider">
+					<div class="second-level-full products">		
+						<div class="l2-section menuGrid gridTwo connectivity">
+							<span class="l2-section-title">Most Popular Sources</span>
+							<a href="/drivers/snowflake/" class="menuSourceIcon"><i class="snowflake"></i>Snowflake</a>
+							<a href="/drivers/databricks/" class="menuSourceIcon"><i class="databricks"></i>Databricks</a>
+							<a href="/drivers/salesforce/" class="menuSourceIcon"><i class="salesforce"></i>Salesforce</a>
+							<a href="/drivers/workday/" class="menuSourceIcon"><i class="workday"></i>Workday</a>
+							<a href="/drivers/bigquery/" class="menuSourceIcon"><i class="bigquery"></i>BigQuery</a>
+							<a href="/drivers/dataverse/" class="menuSourceIcon"><i class="dataverse"></i>Dataverse </a>
+							<a href="/drivers/dynamics365/" class="menuSourceIcon"><i class="dynamics365"></i>Dynamics 365 </a>
+							<a href="/drivers/odata/" class="menuSourceIcon"><i class="odata"></i>OData </a>
+							<a href="/drivers/mongodb/" class="menuSourceIcon"><i class="mongodb"></i>MongoDB </a>
+							<a href="/drivers/sap/" class="menuSourceIcon"><i class="sap"></i>SAP</a>
+							<a href="/drivers/netsuite/" class="menuSourceIcon"><i class="netsuite"></i>NetSuite</a>
+							<a href="/drivers/smartsheet/" class="menuSourceIcon"><i class="smartsheet"></i>Smartsheet </a>
+							<a href="/drivers/jira/" class="menuSourceIcon"><i class="jira"></i>Jira </a>
+							<a href="/drivers/sharepoint/" class="menuSourceIcon"><i class="sharepoint"></i>SharePoint </a>
+							<a href="/drivers/intacct/" class="menuSourceIcon"><i class="sageintacct"></i>Sage Intacct </a>
+							
+							<a href="/drivers/" class="simple arrow simple-brand-depth">View all
+							</a>
+						</div>
+					</div>
+					
+				</div>
+            </div>
+			<div class="tabSectionPane products products-cat menu-data-integration-child" style="display: none;">
+				<a class="backLink"><i class="fa-sharp fa-regular fa-chevron-left fa-xs"></i> Back</a>
+                <div class="second-level-inner">
+                    
+                    <div class="second-level-full products">
+						<div class="row d-flex">
+							<div class="cols-6-lg">
+								<div class="l2-section overview">
+									<span class="body-l margin-bottom-24">CData's data integration solutions provide flexible deployment options across data
+										movement and live connectivity through Sync, Arc, and Connect AI. </span>
+									<div>
+										<a href="/sync/" class="btn arrow btn-dark">Learn more
+										</a>
+									</div>
+						
+								</div>
+							</div>
+							<div class="cols-6-lg">
+								<div class="l2-section menuGrid">
+									<span class="l2-section-title no-p-top">Data Movement</span>
+									<a href="/sync/">ETL/ELT/Reverse ETL
+										<span>CData Sync</span>
+									</a>
+									<a href="https://arc.cdata.com/" target="_blank">EDI & MFT
+										<span>CData Arc</span>
+									</a>
+									<a href="/dbamp/" target="_blank">Salesforce/SQL Server
+										<span>CData DBAmp</span>
+									</a>
+								</div>
+							
+								<div class="l2-section menuGrid">
+									<span class="l2-section-title">Live Connectivity</span>
+									<a href="/ai/">Managed MCP Platform
+										<span>CData Connect AI</span>
+									</a>
+							
+								</div>
+							</div>
+						</div>
+						
+						
+					</div>
+					
+                </div>
+                <div class="second-level-inner divider">
+					
+					<div class="second-level-full products">		
+						<div class="l2-section highlight bracket-box bracket-box--resolve bracket-box--menu">
+
+<span class="bracket bracket--left" aria-hidden="true"></span>
+	<div class="bracket-content">
+
+<img src="/ui/img/news/gartner-logo.svg" alt="Gartner Magic Quadrant" class="img-responsive mb-1" loading="lazy" >
+<div>
+    
+    <span class="highlight-copy">CData's inclusion in the 2025 report underscores the growing recognition of our innovative solutions and our ability to address the evolving demands of modern data integration. </span>
+</div>
+<a href="/lp/gartner-magic-quadrant-data-integration-2025/" class="simple arrow simple-brand-agility" >Get the report </a>
+</div>
+<span class="bracket bracket--right" aria-hidden="true"></span>
+							
+							
+						</div>
+					</div>
+					
+				</div>
+            </div>
+			<div class="tabSectionPane products products-cat menu-embedded-connectivity-child" style="display: none;">
+				<a class="backLink"><i class="fa-sharp fa-regular fa-chevron-left fa-xs"></i> Back</a>
+                <div class="second-level-inner">
+                    
+					<div class="second-level-full products">
+						<div class="row d-flex">
+							<div class="cols-6-lg">
+								<div class="l2-section overview">
+									
+									<span class="body-l margin-bottom-24">Software providers can embed enterprise-grade connectivity to 350+ systems directly inside
+										their products. </span>
+									<div>
+										<a href="/embed/" class="btn arrow btn-dark">Learn more
+										</a>
+									</div>
+							
+								</div>
+							</div>
+							<div class="cols-6-lg">
+								<div class="l2-section menuGrid">
+									<span class="l2-section-title no-p-top">CData Embed</span>
+									<a href="/embed/ai-agent-connectivity/">AI and agent connectivity
+										<span>Ship AI features that can reason and act on real customer sources</span>
+									</a>
+									<a href="/embed/product-integration/">Product integrations
+										<span>Deliver customer-facing features that operate on live customer data</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						
+					</div>
+                </div>
+                <div class="second-level-inner divider">
+					
+					<div class="second-level-full products">		
+						<div class="l2-section highlight bracket-box bracket-box--resolve bracket-box--menu">
+
+<span class="bracket bracket--left" aria-hidden="true"></span>
+	<div class="bracket-content">
+
+<img src="/ui/img/news/cdata_palantir_pr.svg" alt="Palantir Expands CData Partnership" class="img-responsive mb-1" loading="lazy" >
+<div>
+    
+    <span class="highlight-copy">Palantir Technologies has expanded its relationship with CData's Embedded business unit to enhance data connectivity in Palantir Foundry, enabling users to connect to hundreds of data sources through CData's embedded connectors. </span>
+</div>
+<a href="/company/press/cdata-announces-extended-relationship-with-palantir/" class="simple arrow simple-brand-agility" >Read more </a>
+</div>
+<span class="bracket bracket--right" aria-hidden="true"></span>
+							
+						</div>
+					</div>
+				</div>
+            </div>
+			
+			
+		</div>
+	</div>
+</div>
+
+<div class="second-level" data-item="solutions">
+ <div class="container-fluid">
+  <div class="level-two-wrapper tabSections">
+   <div>
+    <div class="second-level-inner">
+     <div class="second-level-full tabs">
+      <a class='leftCatMain menu-data-platform'>
+        By AI & Data Platform
+       </a>
+      <a class='leftCatMain menu-use-case'>
+        By Use Case & Department
+       </a> 
+      
+       
+       
+        <a class='leftCatMain menu-customers'>         
+        Customers
+       </a>
+       <a href='/partner/' class='leftCatMain direct'>         
+        Partner
+       </a>
+      
+     </div>
+     
+    </div>
+   </div>
+
+   <div class="tabSectionPane solutions-cat menu-use-case-child" style="display: none;">
+    <a class="backLink"><i class="fa-sharp fa-regular fa-chevron-left fa-xs"></i> Back</a>
+    <div class="second-level-inner">
+  
+     <div class="second-level-full">
+      <div class="row d-flex">
+        <div class="cols-6-sm">
+          <div class="l2-section menuGrid">
+           <span class="l2-section-title">Use Cases</span>
+           <a href="/solutions/connectivity/">Data Connectivity</a>
+           <a href="/solutions/bi/">BI & Analytics</a>
+           <a href="/solutions/dv/">Enterprise Integration</a>
+           <a href="/solutions/workday/">Workday Integration</a>
+           <a href="/solutions/salesforce/">Salesforce Integration</a>
+           
+           
+           
+           <a href="/platform/data-mesh/">Data Mesh </a>
+          </div>
+        </div>
+
+        <div class="cols-6-sm">
+          <div class="l2-section menuGrid">
+            <span class="l2-section-title">Departments</span>
+            <a href="/solutions/martech/">Marketing</a>
+            <a href="/solutions/salesops/">Sales</a>
+            <a href="/solutions/accounting/">Finance & Accounting</a>
+          </div>
+        </div>
+      </div>
+     </div>
+    </div>
+    <div class="second-level-inner divider">
+      <div class="second-level-full">  
+      <div class="l2-section highlight bracket-box bracket-box--resolve bracket-box--menu">
+       
+
+<span class="bracket bracket--left" aria-hidden="true"></span>
+	<div class="bracket-content">
+
+<img src="/ui/brand-assets/logos/products/connectai/connect-ai-logo-agility-clarity.svg" alt="Vibe Query" class="img-responsive mb-1" loading="lazy" >
+<div>
+    
+    <span class="highlight-copy">Sign up for our limited series covering useful prompts, tips, and future CData MCP releases that will make Claude your undisputed work bestie. </span>
+</div>
+<a href="/ai/vibe-query/" class="simple arrow simple-brand-agility" >Learn more </a>
+</div>
+<span class="bracket bracket--right" aria-hidden="true"></span>
+       
+      </div>
+     </div> 
+    </div>
+   </div>
+
+   <div class="tabSectionPane solutions-cat menu-data-platform-child" style="display: none;">
+    <a class="backLink"><i class="fa-sharp fa-regular fa-chevron-left fa-xs"></i> Back</a>
+    <div class="second-level-inner">
+  
+     <div class="second-level-full">
+      <div class="row d-flex">
+         <div class="cols-6-sm">
+          <div class="l2-section menuGrid">
+        <span class="l2-section-title">AI</span>
+        <a href="/ai/integrations/anthropic/" class="menuSourceIcon"><i class="anthropic"></i>Anthropic</a>
+        <a href="/ai/integrations/databricks/" class="menuSourceIcon"><i class="databricks"></i>Databricks Agent Bricks</a>
+        <a href="/ai/integrations/google/" class="menuSourceIcon"><i class="google"></i>Google</a>
+        <a href="/ai/integrations/microsoft/" class="menuSourceIcon"><i class="microsoft"></i>Microsoft</a>
+        <a href="/ai/integrations/n8n/" class="menuSourceIcon"><i class="n8n"></i>n8n</a>
+        <a href="/ai/integrations/openai/" class="menuSourceIcon"><i class="openai"></i>OpenAI</a>
+      </div>
+         </div>
+          <div class="cols-6-sm">
+            <div class="l2-section menuGrid">
+        <span class="l2-section-title">Data Platforms</span>
+        <a href="/solutions/microsoft-fabric-integration/" class="menuSourceIcon"><i class="fabric"></i>Microsoft Fabric</a>
+        <a href="/solutions/snowflake/" class="menuSourceIcon"><i class="snowflake"></i>Snowflake</a>
+        <a href="/solutions/aws/" class="menuSourceIcon"><i class="aws"></i>AWS</a>
+        <a href="/solutions/databricks/" class="menuSourceIcon"><i class="databricks"></i>Databricks</a>
+        
+      </div>
+          </div>
+        </div>
+
+      
+      
+
+      
+     </div>
+    </div>
+    <div class="second-level-inner divider">
+     <div class="second-level-full">  
+      <div class="l2-section highlight bracket-box bracket-box--resolve bracket-box--menu">
+
+<span class="bracket bracket--left" aria-hidden="true"></span>
+	<div class="bracket-content">
+
+<img src="/ui/img/news/cdata_microsoft_pr.svg" alt="CData Collaborates with Microsoft" class="img-responsive mb-1" loading="lazy" >
+<div>
+    
+    <span class="highlight-copy">CData's Connect AI platform brings MCP connectivity to Microsoft Copilot Studio and Microsoft Agent 365. </span>
+</div>
+<a href="/company/press/cdata-microsoft-enterprise-ai-agents-mcp-integration/" class="simple arrow simple-brand-agility" >Read more </a>
+</div>
+<span class="bracket bracket--right" aria-hidden="true"></span>
+       
+      </div>
+     </div> 
+    </div>
+   </div>
+
+   
+
+   
+   <div class="tabSectionPane oneCol solutions-cat menu-customers-child" style="display: none;">
+    <a class="backLink"><i class="fa-sharp fa-regular fa-chevron-left fa-xs"></i> Back</a>
+    <div class="second-level-inner">
+  
+     <div class="second-level-full">
+      
+      <div class="l2-section menuGrid gridTwo">
+       
+       <span class="l2-section-title">Featured Case Studies</span>
+							<a href="/case-study/gsk/" class="menuCaseIcon"><i class="gsk"></i>GSK</a>
+							<a href="/case-study/uipath/" class="menuCaseIcon"><i class="uipath"></i>UiPath</a>
+							<a href="/case-study/partnerre/" class="menuCaseIcon"><i class="partnerre"></i>PartnerRe</a>
+							<a href="/case-study/scorpion/" class="menuCaseIcon"><i class="scorpion"></i>Scorpion</a>
+							<a href="/case-study/holiday-inn-club/" class="menuCaseIcon"><i class="holidayinn"></i>Holiday Inn Club Vacations</a>
+							<a href="/case-study/santa-clara-university/" class="menuCaseIcon"><i class="santaclara"></i>Santa Clara University </a>
+							<a href="/case-study/officedepot/" class="menuCaseIcon"><i class="officedepot"></i>Office Depot </a>
+							<a href="/case-study/nintex/" class="menuCaseIcon"><i class="nintex"></i>Nintex </a>
+							<a href="/case-study/ellie-ai/" class="menuCaseIcon"><i class="ellieai"></i>Ellie.ai </a>
+							<a href="/case-study/commando/" class="menuCaseIcon"><i class="commando"></i>Commando</a>
+							
+						
+							<div class="padding-top-16"><a href="/case-study/" class="btn arrow btn-dark">View all</a></div>
+      </div>
+
+      
+     </div>
+    </div>
+    <div class="second-level-inner">
+     
+    </div>
+   </div>
+   
+   
+  </div>
+ </div>
+</div><div class="second-level" data-item="developers">
+	<div class="container-fluid">
+		<div class="row d-flex h-100">
+			
+
+			<div class="cols-8-lg">
+				<div class="second-level-inner">
+		
+					<div class="second-level-full">
+						<div class="row d-flex">
+							<div class="cols-5-md">
+								<div class="l2-section overview nonTab">
+							
+									<span class="body-l margin-bottom-24">Access comprehensive tools, SDKs, and resources to integrate CData connectivity solutions
+										into your applications with enterprise-grade data drivers and APIs. </span>
+									<div>
+										<a href="/developers/" class="btn arrow btn-dark">Learn more
+										</a>
+									</div>
+							
+								</div>
+							</div>
+							<div class="cols-7-md">
+								<div class="l2-section menuGrid nonTab">
+									<span class="l2-section-title no-p-top">For Developers</span>
+									<a href="/developers/ai/">AI / MCP
+										<span>Build with fully-managed MCP servers to connect AI tools with your data.</span>
+									</a>
+									<a href="/developers/dot-net/">.NET
+										<span>Use standard ADO.NET Providers to build connected .NET apps</span>
+									</a>
+									<a href="/developers/python/">Python
+										<span>Use DB-API modules to work with data in Python</span>
+									</a>
+									<a href="/developers/java/">Java
+										<span>Use standard JDBC Drivers to build connected Java apps</span>
+									</a>
+									<a href="/developers/sql/">SQL
+										<span>Use standard SQL to integrate data with SQL Server</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						
+
+						
+					</div>
+					
+                    
+				</div>
+			</div>
+			<div class="cols-4-lg">
+				<div class="second-level-inner divider">
+					<div class="second-level-full">		
+						<div class="l2-section highlight bracket-box bracket-box--resolve bracket-box--menu nonTab">
+
+<span class="bracket bracket--left" aria-hidden="true"></span>
+	<div class="bracket-content">
+
+<img src="/ui/img/news/cdata-community.svg" alt="CData Community Empowers Developers" class="img-responsive mb-1" loading="lazy" >
+<div>
+    
+    <span class="highlight-copy">CData's developer community connects thousands of data professionals who share solutions, best practices, and expertise for integrating enterprise data sources through collaborative forums and comprehensive resources. </span>
+</div>
+<a href="https://community.cdata.com/" class="simple arrow simple-brand-agility" target=_blank>Join the community </a>
+</div>
+<span class="bracket bracket--right" aria-hidden="true"></span>
+							
+						</div>
+					</div>
+					
+					
+                    
+				</div>
+			</div>
+		</div>
+	</div>
+</div><div class="second-level" data-item="embed">
+	<div class="container-fluid">
+		<div class="row d-flex h-100">
+			
+
+			<div class="cols-8-lg">
+				<div class="second-level-inner">
+		
+					<div class="second-level-full">
+						<div class="row d-flex">
+							<div class="cols-6-md">
+								<div class="l2-section overview nonTab">
+							
+									<span class="body-l margin-bottom-24">Software providers can embed enterprise-grade connectivity to 350+ systems directly inside their products. </span>
+									<div>
+										<a href="/embed/" class="btn arrow btn-dark">Learn more
+										</a>
+									</div>
+							
+								</div>
+							</div>
+							<div class="cols-6-md">
+								<div class="l2-section menuGrid">
+									<span class="l2-section-title no-p-top">CData Embed</span>
+									<a href="/embed/ai-agent-connectivity/">AI and agent connectivity
+										<span>Ship AI features that can reason and act on real customer sources</span>
+									</a>
+									<a href="/embed/product-integration/">Product integrations
+										<span>Deliver customer-facing features that operate on live customer data</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						
+
+						
+					</div>
+					
+                    
+				</div>
+			</div>
+			<div class="cols-4-lg">
+				<div class="second-level-inner divider">
+					<div class="second-level-full">		
+						<div class="l2-section highlight bracket-box bracket-box--resolve bracket-box--menu nonTab">
+							<span class="bracket bracket--left" aria-hidden="true"></span>
+							<div class="bracket-content">
+						
+								<img src="/ui/img/news/cdata_reports_lockup.svg" alt="CData | Reports" class="img-responsive mb-1" loading="lazy">
+								<div>
+									<span class="l2-highlight-title">State of AI Data Connectivity Report: 2026 Outlook</span>
+									<span class="highlight-copy">Based on research with 200+ data & AI leaders and insights from AI pioneers at Microsoft and AWS, this report is the first to examine how data integration maturity drives AI success.</span>
+								</div>
+								<a href="/lp/ai-data-connectivity-report-2026/" class="simple arrow simple-brand-agility">Get the report</a>
+							</div>
+							<span class="bracket bracket--right" aria-hidden="true"></span>
+						
+						</div>
+					</div>
+					
+					
+                    
+				</div>
+			</div>
+		</div>
+	</div>
+</div><div class="second-level" data-item="resources">
+	<div class="container-fluid">
+		<div class="row d-flex h-100">
+			
+
+			<div class="cols-8-lg">
+				<div class="second-level-inner">
+		
+					<div class="second-level-full">
+                        <div class="row d-flex">
+                            <div class="cols-4-md cols-6-sm">
+                                <div class="l2-section menuGrid nonTab">
+                                    <span class="l2-section-title">Explore</span>
+                                    <a href="/blog/">Blog
+                                    </a>
+                                    <a href="/case-study/">Case Studies</a>
+                                    <a href="/resources/#analyst-reports">Analyst Reports
+                                    </a>
+                                    <a href="/resources/">Content Hub
+                                    </a>
+                                
+                                </div>
+                            </div>
+                            <div class="cols-4-md cols-6-sm">
+                                <div class="l2-section menuGrid nonTab">
+                                    <span class="l2-section-title">Engage</span>
+                                    <a href="https://community.cdata.com/?utm_source=cdata&utm_medium=referral" target="_blank">Community
+                                    </a>
+                                    <a href="/events/">Events
+                                    </a>
+                                    <a href="/company/newsroom/">Newsroom
+                                    </a>
+                                    <a href="/events/foundations-2025/">Foundations Conference
+                                    </a>
+                                
+                                </div>
+                            </div>
+                            <div class="cols-4-md cols-6-sm">
+                                <div class="l2-section menuGrid nonTab">
+                                    <span class="l2-section-title">Support & Services</span>
+                                    <a href="/support/">Support Center
+                                    </a>
+                                    <a href="/kb/">Knowledge Base
+                                    </a>
+                                    <a href="/kb/help/">Product Documentation
+                                    </a>
+                                    <a href="https://portal.cdata.com/?a=subscription">Subscription Manager
+                                    </a>
+                                
+                                </div>
+                            </div>
+                        </div>
+						
+						
+
+						
+					</div>
+					
+                    
+				</div>
+			</div>
+			<div class="cols-4-lg">
+				<div class="second-level-inner divider">
+					<div class="second-level-full">		
+						<div class="l2-section highlight bracket-box bracket-box--resolve bracket-box--menu nonTab">
+
+<span class="bracket bracket--left" aria-hidden="true"></span>
+	<div class="bracket-content">
+
+<img src="/ui/img/news/foundations-2025.svg" alt="Foundations 2025" class="img-responsive mb-1" loading="lazy" >
+<div>
+    
+    <span class="highlight-copy">Join data leaders, AI innovators, and CData experts to explore the future of enterprise data infrastructure. Discover how to build AI-ready foundations, deploy intelligent agents, and transform your organization's data strategy. </span>
+</div>
+<a href="/events/foundations-2025/" class="simple arrow simple-brand-agility" >Watch now on demand </a>
+</div>
+<span class="bracket bracket--right" aria-hidden="true"></span>
+							
+						</div>
+					</div>
+					
+					
+                    
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+		</div>
+	</div>
+
+        
+        
+        <div id='header_buffer'>&nbsp;</div>
+    </header>
+	
+	
+	
+    <div id="main">
+
+
+
+
+<div id="product-wrapper" class="product-wrapper">
+    <div class='container'>
+		<div class='padder'>			
+			  
+	<h1>File Not Found</h1>
+	<p>
+		Unfortunately the file that you have requested is unavailable on our servers.  If you feel like you have reached this page in error, please contact our 
+		webmaster at <a href="/cdn-cgi/l/email-protection#bdcad8dfd0dccec9d8cffdded9dcc9dc93ded2d0"><span class="__cf_email__" data-cfemail="790e1c1b14180a0d1c0b391a1d180d18571a1614">[email&#160;protected]</span></a>
+	</p>	
+		
+	<p>You will be automatically redirected to our home page. If you are not forwarded, <a href="https://www.cdata.com/">click here</a></p>
+
+		</div>
+    </div>
+</div>
+
+
+
+<div class="product-wrapper" id="site-footer" data-theme="dark"> 
+    <div class="container">
+		<div class="footer-grid">
+			<div class="footer-about">
+				<a href="https://www.cdata.com" class="footer-logo" >
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116 23" aria-hidden="true" focusable="false" class="logo-icon">
+						<path
+							d="M0 0H22.2095V4.23911H10.74C6.94064 4.23911 3.86067 7.31907 3.86067 11.1184C3.86067 14.9177 6.94064 17.9977 10.74 17.9977H22.2095V22.2096H0V0Z"
+							fill="currentColor" />
+						<path fill-rule="evenodd" clip-rule="evenodd"
+							d="M38.5084 0.011261C44.6435 0.011261 49.6129 4.98663 49.6129 11.1158C49.6129 17.2509 44.6375 22.2203 38.5084 22.2203H26.3365V0.011261H38.5084ZM31.1567 18.0205H38.5083C42.159 18.0205 45.1228 14.7695 45.1228 11.1158C45.1227 7.46507 42.1621 4.24235 38.5084 4.24235H31.1567V18.0205Z"
+							fill="currentColor" />
+						<path fill-rule="evenodd" clip-rule="evenodd"
+							d="M75.2256 22.2203H70.0353L68.6543 18.0271H56.1658L54.8022 22.2203H49.6119L57.3571 0.011261H67.4096L75.2256 22.2203ZM57.5563 13.7868H67.2536L64.1113 4.23307H60.6517L57.5563 13.7868Z"
+							fill="currentColor" />
+						<path d="M93.4863 4.23664H85.2519V22.2203H80.3603V4.23664H72.1254V0.011261H93.4863V4.23664Z" fill="currentColor" />
+						<path fill-rule="evenodd" clip-rule="evenodd"
+							d="M116 22.2203H110.81L109.429 18.0272H96.9402L95.5766 22.2203H90.3864L98.1315 0.0112915H108.184L116 22.2203ZM98.3307 13.7868H108.028L104.886 4.2331H101.426L98.3307 13.7868Z"
+							fill="currentColor" />
+					</svg>
+
+				</a>
+				<p class="footer-text">CData is the data layer that makes AI work in production&mdash;live connectivity and replication across 350+ sources, semantic context, and built-in governance. Powering AI for Databricks, Microsoft, Google, Palantir, and 10,000+ customers worldwide.</p>
+				
+				<div class="logo-col-lower">
+	    			<div class="socials"> 
+	    				<a href="https://www.linkedin.com/company/cdatasoftware" class="linkedin" target="_blank" rel="noreferrer" aria-label="linkedin">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="socialIcon" viewBox="0 0 12 12">
+								<path d="M2.46272 11H0.181696V3.65603H2.46272V11ZM1.32098 2.65424C0.591741 2.65424 0 2.05022 0 1.32098C0 0.970636 0.139174 0.634639 0.386907 0.386907C0.634639 0.139174 0.970636 0 1.32098 0C1.67133 0 2.00733 0.139174 2.25506 0.386907C2.50279 0.634639 2.64196 0.970636 2.64196 1.32098C2.64196 2.05022 2.05022 2.65424 1.32098 2.65424ZM10.9975 11H8.72143V7.425C8.72143 6.57299 8.70424 5.48036 7.53549 5.48036C6.34955 5.48036 6.16786 6.40603 6.16786 7.36362V11H3.88929V3.65603H6.07701V4.65781H6.10893C6.41339 4.0808 7.15737 3.47187 8.26719 3.47187C10.5752 3.47187 11 4.99174 11 6.96585V11H10.9975Z" fill="currentColor"/>
+							</svg>
+                        </a>
+	    				<a href="https://x.com/cdatasoftware/" class="twitter" target="_blank" rel="noreferrer" aria-label="X">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="socialIcon" viewBox="0 0 13 11">
+								<path d="M9.68896 0H11.5558L7.47838 4.65913L12.275 11H8.5202L5.57718 7.15529L2.21371 11H0.344243L4.70458 6.01563L0.106262 0H3.95626L6.61371 3.51418L9.68896 0ZM9.03319 9.88413H10.0671L3.39304 1.05769H2.28246L9.03319 9.88413Z" fill="currentColor"/>
+							</svg>
+                        </a>
+	    				
+						<a href="https://www.youtube.com/c/CDataSoftware" class="youtube" target="_blank" rel="noreferrer" aria-label="youtube">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="socialIcon youtube" viewBox="0 0 16 11">
+								<path d="M15.3198 1.72161C15.1393 1.04271 14.6094 0.509896 13.9362 0.329427C12.7159 0 7.82318 0 7.82318 0C7.82318 0 2.93047 0 1.71016 0.329427C1.03698 0.509896 0.507031 1.04271 0.326563 1.72161C0 2.95052 0 5.51146 0 5.51146C0 5.51146 0 8.0724 0.326563 9.3013C0.507031 9.98021 1.03698 10.4901 1.71016 10.6706C2.93047 11 7.82318 11 7.82318 11C7.82318 11 12.7159 11 13.9362 10.6706C14.6094 10.4901 15.1393 9.97734 15.3198 9.3013C15.6464 8.0724 15.6464 5.51146 15.6464 5.51146C15.6464 5.51146 15.6464 2.95052 15.3198 1.72161ZM6.22474 7.8375V3.18542L10.3125 5.51146L6.22474 7.8375Z" fill="currentColor"/>
+							</svg>
+                        </a>
+
+						<a href="https://github.com/CDataSoftware" target="_blank" rel="noreferrer" aria-label="github">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true" focusable="false" class="socialIcon github">
+							<path fill="currentColor"
+								d="M237.9 461.4C237.9 463.4 235.6 465 232.7 465C229.4 465.3 227.1 463.7 227.1 461.4C227.1 459.4 229.4 457.8 232.3 457.8C235.3 457.5 237.9 459.1 237.9 461.4zM206.8 456.9C206.1 458.9 208.1 461.2 211.1 461.8C213.7 462.8 216.7 461.8 217.3 459.8C217.9 457.8 216 455.5 213 454.6C210.4 453.9 207.5 454.9 206.8 456.9zM251 455.2C248.1 455.9 246.1 457.8 246.4 460.1C246.7 462.1 249.3 463.4 252.3 462.7C255.2 462 257.2 460.1 256.9 458.1C256.6 456.2 253.9 454.9 251 455.2zM316.8 72C178.1 72 72 177.3 72 316C72 426.9 141.8 521.8 241.5 555.2C254.3 557.5 258.8 549.6 258.8 543.1C258.8 536.9 258.5 502.7 258.5 481.7C258.5 481.7 188.5 496.7 173.8 451.9C173.8 451.9 162.4 422.8 146 415.3C146 415.3 123.1 399.6 147.6 399.9C147.6 399.9 172.5 401.9 186.2 425.7C208.1 464.3 244.8 453.2 259.1 446.6C261.4 430.6 267.9 419.5 275.1 412.9C219.2 406.7 162.8 398.6 162.8 302.4C162.8 274.9 170.4 261.1 186.4 243.5C183.8 237 175.3 210.2 189 175.6C209.9 169.1 258 202.6 258 202.6C278 197 299.5 194.1 320.8 194.1C342.1 194.1 363.6 197 383.6 202.6C383.6 202.6 431.7 169 452.6 175.6C466.3 210.3 457.8 237 455.2 243.5C471.2 261.2 481 275 481 302.4C481 398.9 422.1 406.6 366.2 412.9C375.4 420.8 383.2 435.8 383.2 459.3C383.2 493 382.9 534.7 382.9 542.9C382.9 549.4 387.5 557.3 400.2 555C500.2 521.8 568 426.9 568 316C568 177.3 455.5 72 316.8 72zM169.2 416.9C167.9 417.9 168.2 420.2 169.9 422.1C171.5 423.7 173.8 424.4 175.1 423.1C176.4 422.1 176.1 419.8 174.4 417.9C172.8 416.3 170.5 415.6 169.2 416.9zM158.4 408.8C157.7 410.1 158.7 411.7 160.7 412.7C162.3 413.7 164.3 413.4 165 412C165.7 410.7 164.7 409.1 162.7 408.1C160.7 407.5 159.1 407.8 158.4 408.8zM190.8 444.4C189.2 445.7 189.8 448.7 192.1 450.6C194.4 452.9 197.3 453.2 198.6 451.6C199.9 450.3 199.3 447.3 197.3 445.4C195.1 443.1 192.1 442.8 190.8 444.4zM179.4 429.7C177.8 430.7 177.8 433.3 179.4 435.6C181 437.9 183.7 438.9 185 437.9C186.6 436.6 186.6 434 185 431.7C183.6 429.4 181 428.4 179.4 429.7z" />
+						</svg>
+
+                        </a>
+
+						<a href="https://community.cdata.com/?utm_source=cdata&utm_medium=referral" target="_blank" rel="noreferrer" aria-label="CData Community">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="socialIcon"><path fill="currentColor" d="M96.3 402.9l10.7-26.2-17.8-22C63.1 322.4 48 282.7 48 240 48 136.8 138.2 48 256 48s208 88.8 208 192-90.2 192-208 192c-30.5 0-59.2-6-85.1-16.8l-16.8-7c-5.6 1.9-28.8 9.9-69.8 24l12-29.4zM0 512c34.9-12 85.7-29.5 152.5-52.4 31.6 13.1 66.7 20.4 103.5 20.4 141.4 0 256-107.5 256-240S397.4 0 256 0 0 107.5 0 240C0 294.4 19.3 344.6 51.8 384.8 32.7 431.8 15.4 474.2 0 512zM144 272a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm144-32a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm80 32a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"/></svg>
+                        </a>
+                        
+	    			</div>
+	    			
+						<button onclick="return openChat();" class="arrow btn btn-outline btn-outline-white">Let's Chat</button>
+    			</div>
+			</div>
+			<div class="footer-links-col1">
+				
+    			<span class="link-list-title">Connectivity</span>
+    			<ul class="link-list">
+    				<li><a href="https://www.cdata.com/odbc/" >ODBC Drivers</a></li>
+    				<li><a href="https://www.cdata.com/jdbc/" >Java (JDBC)</a></li>
+    				<li><a href="https://www.cdata.com/ado/" >ADO.NET</a></li>
+    				<li><a href="https://www.cdata.com/python/" >Python</a></li>
+    				
+                    
+    				<li><a href="https://www.cdata.com/apiserver/" >API Server</a></li>
+					<li><a href="https://www.cdata.com/apidriver/" >REST Connectors</a></li>
+                    <li><a href="https://www.cdata.com/excel/" >Excel Add-Ins</a></li>
+					<li><a href="https://www.cdata.com/powerbi/" >Power BI Connectors</a></li>
+    				<li><a href="https://www.cdata.com/tableau/" >Tableau Connectors</a></li>
+    			</ul>
+			</div>
+			<div class="footer-links-col2">
+				
+    			<span class="link-list-title">ETL/ ELT</span>
+    			<ul class="link-list">
+    				<li><a href="https://www.cdata.com/sync/" >Sync</a></li>
+                    <li><a href="https://www.cdata.com/ai/analytics/" >Connect AI</a></li>
+    				<li><a href="https://www.cdata.com/ssis/" >SQL SSIS Tools</a></li>
+					<li><a href="https://www.cdata.com/dbamp/" >DBAmp</a></li>
+    				<li><a href="https://www.cdata.com/powershell/" >PowerShell</a></li>
+    			</ul>
+			</div>
+			<div class="footer-links-col3">
+				
+				<span class="link-list-title">Embed</span>
+				<ul class="link-list">
+					<li>
+						<a href="https://www.cdata.com/embed/connectors/" >Connectors</a>
+					</li>
+					<li>
+						<a href="https://www.cdata.com/embed/product-integration/" >Product Integrations</a>
+					</li>
+					<li>
+						<a href="https://www.cdata.com/embed/ai-agent-connectivity/" >AI & Agent Connectivity</a>
+					</li>
+					<li>
+						<a href="https://www.cdata.com/embed/customers/" >Embed Customers</a>
+					</li>
+					<li>
+						<a href="https://www.cdata.com/embed/compare/ipaas/" >CData vs. iPaaS</a>
+					</li>
+					<li>
+						<a href="https://www.cdata.com/embed/compare/unified-api/" >CData vs. Unified API</a>
+					</li>
+					
+				</ul>
+			</div>
+			<div class="footer-links-col4">
+				
+    			<span class="link-list-title">Company</span>
+    			<ul class="link-list">
+    				<li><a href="https://www.cdata.com/company/" >About CData</a></li>
+					<li><a href="https://www.cdata.com/company/press.aspx" >Press Releases</a></li>
+					<li><a href="https://www.cdata.com/company/newsroom/" >Newsroom</a></li>
+					<li><a href="https://www.cdata.com/company/awards.aspx" >Awards</a></li>
+					<li><a href="https://www.cdata.com/company/leadership.aspx" >Leadership</a></li>
+    				<li><a href="https://www.cdata.com/partner/" >Partners</a></li>
+    				<li><a href="https://www.cdata.com/company/careers/" >Careers</a></li>
+					<li><a href="https://www.cdata.com/company/contact.aspx" >Contact Us</a></li>
+    				
+    			</ul>
+			</div>
+			<div class="footer-links-col5">
+				
+    			<span class="link-list-title">Resources</span>
+    			<ul class="link-list">
+					<li><a href="https://community.cdata.com/?utm_source=cdata&utm_medium=referral" >CData Community</a></li>
+					<li><a href="https://www.cdata.com/case-study/" >Case Studies</a></li>
+    				<li><a href="https://www.cdata.com/blog/" >Blog</a></li>
+    				<li><a href="https://www.cdata.com/resources/" >Resources</a></li>
+                    <li><a href="https://www.cdata.com/contact/newsletter.aspx" >Newsletter Signup</a></li>
+					<li><a href="https://www.cdata.com/glossary/" >Glossary</a></li>
+                    <li><a href="https://www.cdata.com/kb/video/">Video Gallery</a></li>
+    			</ul>
+			</div>
+			<div class="footer-links-col6">
+				
+    			<span class="link-list-title">AI Integrations</span>
+    			<ul class="link-list">
+					<li><a href="https://www.cdata.com/ai/integrations/anthropic/" >Anthropic</a></li>
+					<li><a href="https://www.cdata.com/ai/integrations/databricks/" >Databricks</a></li>
+					<li><a href="https://www.cdata.com/ai/integrations/google/" >Google</a></li>
+					<li><a href="https://www.cdata.com/ai/integrations/microsoft/" >Microsoft</a></li>
+					<li><a href="https://www.cdata.com/ai/integrations/n8n/" >n8n</a></li>
+					<li><a href="https://www.cdata.com/ai/integrations/openai/" >OpenAI</a></li>
+    			</ul>
+			</div>
+		</div>
+    	
+    	
+    	
+    	
+		<div class="footer-legal">
+			<div class="terms">
+					<a href="https://www.cdata.com/company/legal/terms/" >Terms & Conditions</a>
+					<a href="https://www.cdata.com/company/legal/privacy/" >Privacy Policy</a>
+				<a href="https://www.cdata.com/security/" >Security</a>
+				
+			</div>
+			<div class="copyright">
+				<p>&copy; 2026 CData Software, Inc. All rights reserved. Various trademarks held by their respective owners.</p>
+			</div>
+
+			
+			
+		</div>
+
+		
+    		
+    </div>
+	<div class="footer-masthead"></div>
+</div>  
+
+
+  
+	
+	
+    <div id="nav-breakpoint" aria-hidden="true"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    
+    // Dynamically Load Icon CSS when first menu hover, or hamburger menu click (for SEO perf).
+    $rsbpage.ready(function (){
+            
+        // only load glightbox library on pages where the main content section renders glightbox-specific markup
+        // not a great selector, but provides a lot of flexibility -- use with caution!
+        if ($('#main [class*="glightbox"]').length) {
+            // use global loadLightbox flag to signal whether we intend on loading lightbox or not
+            $rsbpage.loadLightbox = true;
+            rsb.loadExternalScript('/ui/lib/glightbox/glightbox.min.js', false);
+            loadDynamicCss('lightbox-styles', '/ui/lib/glightbox/glightbox.min.css');
+        }
+    });
+    
+    $rsbpage.glightboxReady(function (){
+        if (GLightbox) {
+            const lightbox = GLightbox({
+                selector: '.glightbox',
+                autoplayVideos: false,
+                touchNavigation: true,
+                loop: true,
+            });
+            var lightboxGallery1 = GLightbox({
+                selector: '.glightbox1',
+                autoplayVideos: false,
+                touchNavigation: true,
+            });
+            var lightboxGallery2 = GLightbox({
+                selector: '.glightbox2',
+                autoplayVideos: false,
+                touchNavigation: true,
+            });
+            //prevent gallery slider arrows for duplicate video links, such as thumbnail and button
+            var lightboxVideoThumb = GLightbox({
+                selector: '.glightbox-video-thumb',
+                autoplayVideos: false,
+                touchNavigation: true,
+            });
+            var lightboxVideoBtn = GLightbox({
+                selector: '.glightbox-video-btn',
+                autoplayVideos: false,
+                touchNavigation: true,
+            });
+            var lightboxAutoplayVideo = GLightbox({
+                selector: '.glightbox-autoplay-video',
+                autoplayVideos: true,
+                touchNavigation: true,
+            });
+        }
+    });
+</script>
+
+	
+
+    
+    </div>
+    
+      
+    <link rel="preload" as="style" href="/ui/lib/fontawesome-pro-7.1.0-web/css/style-bundle.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/ui/lib/fontawesome-pro-7.1.0-web/css/style-bundle.min.css"></noscript>
+<script>
+/* Pardot consent bridge (QS-first; with GCLID support; injected by Worker) */
+(function (w, d) {
+  const KEY = 'tool:pardot-consent-bridge';
+  w.__zOnce = w.__zOnce || Object.create(null);
+  if (w.__zOnce[KEY]) return; w.__zOnce[KEY] = true;
+  console.info('Injected worker pardot bridge booting');
+
+  const DEBUG = true;
+  const tag = 'PardotQS';
+  const dbg  = (...a) => { if (DEBUG) console.log(tag + ':', ...a); };
+  const dbgw = (...a) => { if (DEBUG) console.warn(tag + ':', ...a); };
+  const redactUrl = (url) => { try { const u = new URL(url, w.location.href); return u.origin + u.pathname; } catch { return String(url); } };
+
+  const ENABLE_POSTMESSAGE = false;
+
+  const PARDOT_ORIGIN = (() => {
+    try {
+      const host = (w.location.hostname || '').toLowerCase();
+      const path = (w.location.pathname || '').toLowerCase();
+      const isJP = host === 'jp.cdata.com' || (host === 'arc.cdata.com' && path.startsWith('/jp'));
+      return (isJP ? 'https://jp-go.cdata.com' : 'https://go.cdata.com').toLowerCase();
+    } catch { return 'https://go.cdata.com'; }
+  })();
+
+  function getFunctionalityKey() {
+    try {
+      const purposes = w.zaraz?.consent?.purposes;
+      if (!purposes) return null;
+      for (const [key, obj] of Object.entries(purposes)) {
+        const en = obj?.name?.en;
+        if (typeof en === 'string' && en.trim().toLowerCase() === 'functionality') return key;
+      }
+      return null;
+    } catch { return null; }
+  }
+  function getCookieConsent() {
+    const hasApi = !!(w.zaraz?.consent?.get);
+    if (!hasApi) return 'unknown';
+    const k = getFunctionalityKey();
+    if (!k) return 'unknown';
+    const v = w.zaraz.consent.get(k);
+    return v === true ? 'granted' : v === false ? 'denied' : 'unknown';
+  }
+
+  function getCountry() { return (d.querySelector('meta[name="cf:country"]')?.content || '').trim().toUpperCase(); }
+  function getIsEU() {
+    const raw = (d.querySelector('meta[name="cf:isEU"]')?.content || '').trim().toLowerCase();
+    if (raw === 'true') return true;
+    if (raw === 'false') return false;
+    const c = getCountry();
+    if (c === 'CH' || c === 'UK') return true;
+    return undefined;
+  }
+  function geoDefaultConsent() {
+    const e = getIsEU();
+    if (e === true) return 'denied';
+    if (e === false) return 'granted';
+    return 'unknown';
+  }
+
+  function getGclidFromStorage() {
+    try {
+      const candidates = [ w.localStorage?.getItem('gclid'), w.sessionStorage?.getItem('gclid') ];
+      for (const raw of candidates) {
+        if (!raw) continue;
+        let val = raw;
+        try {
+          const parsed = JSON.parse(raw);
+          if (parsed && typeof parsed === 'object') val = parsed.value ?? parsed.gclid ?? parsed.id ?? '';
+        } catch {}
+        if (typeof val === 'string' && (val = val.trim())) return val;
+      }
+    } catch {}
+    return null;
+  }
+  function hasParamCaseInsensitive(u, name) {
+    name = name.toLowerCase();
+    for (const k of u.searchParams.keys()) if (k.toLowerCase() === name) return true;
+    return false;
+  }
+
+  function getDeferredPardotFrames() {
+    const nodes = d.querySelectorAll('iframe[data-pardot-bridge="qs"][data-src]:not([data-pardot-loaded])');
+    const out = [];
+    for (const el of nodes) {
+      try {
+        const u = new URL(el.getAttribute('data-src') || '', w.location.href);
+        if (u.origin.toLowerCase() === PARDOT_ORIGIN) out.push(el);
+      } catch {}
+    }
+    dbg('Deferred frames found:', out.length);
+    if (out.length === 0) dbg('No deferred Pardot iframes (or Worker left src in place).');
+    return out;
+  }
+
+  function loadDeferredFrames(consent) {
+    const frames = getDeferredPardotFrames();
+    if (!frames.length) return;
+
+    const country = getCountry();
+    const isEU = getIsEU();
+    const gclid  = getGclidFromStorage();
+
+    dbg('Loading deferred frames with params:', { consent, country, isEU, gclid_present: !!gclid });
+
+    for (const el of frames) {
+      try {
+        const raw = el.getAttribute('data-src') || '';
+        const u = new URL(raw, w.location.href);
+
+        if (!u.searchParams.has('cookie_consent')) u.searchParams.set('cookie_consent', (consent || 'unknown').toLowerCase());
+        // if (country && !u.searchParams.has('country')) u.searchParams.set('country', country);
+        // if (!u.searchParams.has('isEU')) u.searchParams.set('isEU', String(isEU === true));
+
+        if (gclid && !hasParamCaseInsensitive(u, 'gclid')) {
+          u.searchParams.set('GCLID', gclid);
+          dbg('Appended GCLID to iframe URL (value redacted)');
+        } else if (hasParamCaseInsensitive(u, 'gclid')) {
+          dbg('GCLID already present on iframe URL; not appending');
+        }
+
+        dbg('Setting iframe src:', redactUrl(u.toString()), 'params:', {
+          cookie_consent: u.searchParams.get('cookie_consent'),
+          gclid_present: hasParamCaseInsensitive(u, 'gclid')
+        });
+
+        el.setAttribute('src', u.toString());
+        el.setAttribute('data-pardot-loaded', '1');
+        el.removeAttribute('data-src');
+      } catch (e) {
+        dbgw('Failed to load deferred frame:', e);
+      }
+    }
+  }
+
+  // Orchestration (QS-first; once-only)
+  let qsLoaded = false;
+  function initQSOnce(consent) {
+    dbg('Init Pardot QS Bridge!', { qsLoaded, consent });
+    if (qsLoaded) return;
+    const frames = getDeferredPardotFrames();
+    if (!frames.length) return;
+    qsLoaded = true;
+    loadDeferredFrames(consent);
+  }
+
+  // Primary (if Zaraz present)
+  w.addEventListener('zarazConsentInitialized', function onInit() {
+    dbg('zarazConsentInitialized received → initializing QS with live consent');
+    initQSOnce(getCookieConsent());
+  }, { once: true });
+
+  // Fallback (Zaraz blocked): load after window load + 1s using geo default
+  if (d.readyState === 'complete') {
+    setTimeout(() => { dbg('readyState complete → fallback timer fired'); initQSOnce(geoDefaultConsent()); }, 1000);
+  } else {
+    w.addEventListener('load', () => { setTimeout(() => { dbg('window.load → fallback timer fired'); initQSOnce(geoDefaultConsent()); }, 1000); }, { once: true });
+  }
+})(window, document);
+</script></body>
+</html>
+

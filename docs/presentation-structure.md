@@ -66,6 +66,18 @@ The framing: PMM's job isn't to run a developer program — it's to build the po
 
 ---
 
+### Proof point: this is what the strategy looks like when it ships
+
+Before getting into what I'd do at CData — here's what it looks like when I've done it.
+
+> [Show Ahrefs screenshot]
+
+> "This is organic traffic, impressions, and referring domains for [company] over the last few years. The spike you're seeing on the right is recent — that's the result of a content and discoverability strategy I ran. Organic traffic and impressions essentially flat for two years, then a sharp inflection. That didn't happen by accident. It happened because we shipped specific, runnable content in the places developers actually look — GitHub READMEs, Stack Overflow, technical blog posts with reproducible examples. The same playbook applies here. The difference is CData has a discoverability gap that's measurable and fixable, and I've already started."
+
+This lands the 90-day plan as execution, not theory.
+
+---
+
 ### Competitive Context (set this up before the 90-day plan)
 
 Before talking about what I'd do, here's what we're actually up against.

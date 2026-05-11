@@ -125,22 +125,42 @@ This is the pattern developers expect from modern CLI tools (Vercel, Stripe, Her
 
 Ranked by impact on time-to-first-API-call:
 
-1. **[Title]** — [specific, actionable description]
-2. **[Title]** — [specific, actionable description]  
-3. **[Title]** — [specific, actionable description]
-4. **[Title]** — [specific, actionable description]
-5. **[Title]** — [specific, actionable description]
+1. **Fix the `Accept` header in all docs and example repos** — Every copy-pasted implementation from CData's own GitHub repos returns a 406 immediately because the documented header (`Accept: text/event-stream`) is wrong. The correct value is `Accept: application/json, text/event-stream`. This is a one-line fix that unblocks every developer who follows the documented path. Until this is fixed, the quickstart is broken by default.
+
+2. **Rewrite the 401 error to say the username is wrong, not the token** — The current error (`"Failed to authenticate token"`) implies the PAT is invalid. The actual cause is usually a wrong email address — developers use a work email when the account was registered with a personal Gmail. The error response should say: `"Authentication failed: check that your username matches the email address used to register at cloud.cdata.com"`. This alone eliminates ~10 minutes of debugging from the average first session.
+
+3. **Add `source .venv/bin/activate` as an explicit step in every Python quickstart** — Missing from current docs. Every developer hitting this for the first time on Python 3.12+ gets a `ModuleNotFoundError` because they're running system Python. This is the most common first-session stumble for Python tooling and takes one sentence to prevent.
+
+4. **Fix the setup guide contextual rendering** — The right-panel "Setup Guide" on the connection setup page shows steps 1–3 ("Open the Sources page," "Click + Add Connection," "Type GitHub into the search field") to a developer who has already completed those steps to arrive at the page. The guide should detect the current page context and jump to step 4. Minor friction individually, but it signals the docs are out of sync with where the user actually is.
+
+5. **Make schema metadata opt-in in tool responses** — Every `queryData` response includes a full `schema` array per row (column names, data types, ordinals, catalog/schema/table names). This metadata is useful once but inflates every subsequent tool call, bloating LLM context and causing apparent hangs with larger models. Adding a `?includeSchema=false` query parameter (or only returning schema on the first call per session) would make agent-based queries significantly faster without changing the default behavior for existing integrations.
 
 ---
 
 ## What I'd Ship in the First 30 Days
 
-Based on this audit, the highest-ROI content/DX investments are:
+The DX fixes above are quick wins — file them as bugs, ship them inside week one. The 30-day plan is bigger: audit everything before publishing anything new.
 
-- [ ] [Quickstart improvement]
-- [ ] [Doc gap to fill]
-- [ ] [Error message to improve]
-- [ ] [Auth guide to write]
+### Week 1–2: Quick wins + audit kickoff
+
+**DX fixes (ship immediately — don't wait):**
+- [x] Fix `Accept` header across all docs and example repos
+- [ ] Rewrite 401 error message to surface username mismatch
+- [ ] Add `source .venv/bin/activate` to Python quickstart
+
+**Audit kickoff (running in parallel):**
+- [ ] **Marketing website audit** — walk every developer-facing page cold. Does the above-the-fold copy make the SQL-queryable / live connectivity / enterprise depth story legible? Is the Composio comparison addressable? What's the time-to-understanding for a developer who lands from a Google search vs. an LLM referral?
+- [ ] **Channel audit** — inventory every active channel: newsletter cadence + open rates, social (LinkedIn, Twitter/X, YouTube), developer community (Discord, Slack, Stack Overflow presence). What's publishing? What's performing? What went dark?
+- [ ] **Documentation coverage audit** — which connectors have full tutorials vs. stubs? Which auth patterns (OAuth, API key, SSO, service accounts) are documented with working examples vs. described in one sentence? Where are developers dropping off in the docs funnel?
+
+### Week 3–4: Content gap analysis + first drafts
+
+- [ ] **Competitive content gap** — pull every Composio, Airbyte, Fivetran tutorial and comparison post that ranks for queries CData should own ("connect AI agent to Salesforce," "Python DB-API enterprise data," "MCP server for enterprise SaaS"). Map what exists vs. what we need. This is the content roadmap input.
+- [ ] **Existing content triage** — identify the 10 highest-traffic pieces that are underperforming (dropping rank, high bounce, outdated examples). A title refresh + code sample update on a page already indexed beats a new post for time-to-impact.
+- [ ] **Newsletter + social content calendar** — based on what the channel audit found, establish a publishing cadence and ownership model. What does PMM write vs. DevRel? What gets repurposed across channels vs. written fresh?
+- [ ] **First 2–3 content drafts** — based on the gap analysis: the Composio comparison piece and the MCP quickstart are the highest-priority net-new content. Start drafts in week 4; don't wait for a complete audit to write.
+
+**Day 30 deliverable:** Positioning + DX + discoverability + channel brief to product and leadership. Not a strategy deck — a prioritized list of what's broken, what's missing, and what ships next, with data behind each call.
 
 ---
 

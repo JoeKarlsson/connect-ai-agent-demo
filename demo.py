@@ -27,14 +27,14 @@ TYPE_SPEED = 0.018 if FAST else 0.042   # seconds per character
 
 DEMO_STEPS = [
     {
-        "comment": "what does the pipeline look like right now?",
-        "command": "python main.py \"What's my pipeline value by stage and who are the top reps?\"",
-        "query":   "What's my pipeline value by stage and who are the top reps?",
+        "comment": "QBR prep: who actually has pipeline vs. who just has big numbers",
+        "command": "python main.py \"Break down our sales pipeline for a QBR: show total and probability-weighted ARR by stage (Discovery 10%, Proposal 40%, Negotiation 75%, Closed Won 100%). Then rank each rep by weighted pipeline value — and flag any rep where their raw pipeline significantly overstates their weighted number, because that gap is concentration risk.\"",
+        "query":   "Break down our sales pipeline for a QBR: show total and probability-weighted ARR by stage (Discovery 10%, Proposal 40%, Negotiation 75%, Closed Won 100%). Then rank each rep by weighted pipeline value — and flag any rep where their raw pipeline significantly overstates their weighted number, because that gap is concentration risk.",
     },
     {
-        "comment": "now pull in GitHub too — same command, both sources",
-        "command": "python main.py \"Who is my top sales rep, what are their biggest open deals, and do I have any GitHub repos relevant to those deals?\"",
-        "query":   "Who is my top sales rep, what are their biggest open deals, and do I have any GitHub repos relevant to those deals?",
+        "comment": "cross-source: does our pipeline target who actually buys from us?",
+        "command": "python main.py \"We're deciding where to focus sales effort. Show our open pipeline ARR by industry. Then from our customer database, pull total revenue and average order value by sector. Tell me: does our pipeline targeting match where our best customers come from — and where's the biggest gap?\"",
+        "query":   "We're deciding where to focus sales effort. Show our open pipeline ARR by industry. Then from our customer database, pull total revenue and average order value by sector. Tell me: does our pipeline targeting match where our best customers come from — and where's the biggest gap?",
     },
 ]
 
