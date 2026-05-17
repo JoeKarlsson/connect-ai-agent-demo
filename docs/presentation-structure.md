@@ -130,6 +130,31 @@ The framing here matters: this isn't "audit, then act." Fixes ship the moment we
 - CData already has `llms.txt` on both `cdata.com` and `docs.cloud.cdata.com` — the foundation exists. Week 1 fix is rewriting the marketing file to be a curated Connect AI guide (SQL vs. action-based, quickstart URL, enterprise source list) rather than a product index. The docs file is a 300-page sitemap; that becomes `llms-full.txt`. One week of work, not a campaign.
 - Start shipping into training-data-relevant surfaces in parallel: README improvements, Stack Overflow answers, GitHub repos with working ConnectAI examples — this doesn't wait for the llms.txt rewrite
 
+**The Quick Start is the highest-leverage single page in the developer funnel — and it's broken.**
+
+> [Show slide: "The Quick Start Problem"]
+
+The current Quick Start walks you through signing in, connecting a source, and then waves at a menu of options: Power BI, Excel, Tableau, REST API, OData. It never shows you what success looks like. No expected output. No complete end-to-end flow. No moment where a developer can say "that worked."
+
+That's not a quick start — it's a product tour that stops before the finish line.
+
+**What a developer quick start actually needs to do:**
+- Start with `pip install` — not "Step 1: Sign In"
+- Show exactly 10–15 lines of code
+- Show the exact output that means it worked
+- End with the developer having queried real data and knowing what to build next
+
+**The slide:**
+
+| Current Quick Start | What it should be |
+|---|---|
+| "Connect a source, explore it, use it from AI or BI tools" | "Query your first data source in under 15 minutes" |
+| Branches into Power BI / Excel / Tableau / REST / OData | One path: `pip install cdata-connect-ai` → credentials → working query |
+| No expected output shown | Shows exact terminal output so you know it worked |
+| Ends at "here are your options" | Ends with a working agent making a real query |
+
+Time-to-first-successful-query is the metric. The current Quick Start doesn't optimize for it. This is the first concrete DX fix — rewrite it with a stopwatch in hand and don't ship until a developer with no CData context can hit a working query in under 15 minutes.
+
 **Audiences being instrumented across all three workstreams:** enterprise users (IT leads, data teams), developers (AI agent builders, Python data engineers), and AI agents (Claude Code, Cursor, Copilot). Each discovers CData through a different channel, and each channel breaks differently. ConnectAI is the primary focus.
 
 **Day 30 deliverable:** Funnel baseline + keyword cluster map + LLM/DX findings. Data with clear implications — not a strategy deck.
