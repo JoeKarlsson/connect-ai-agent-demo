@@ -427,6 +427,13 @@ SCRIPTS = {
 · LLM discoverability + DX baseline: already have it — show the table. Rewrite llms.txt. Start shipping into training-data surfaces.
 · Day 30 deliverable: funnel baseline + keyword cluster map + LLM/DX findings. Data with clear implications, not a strategy deck.""",
 
+    '35b': """The Quick Start Problem.
+· This is the highest-traffic developer page we have. It determines whether a developer who found us actually stays.
+· Current state: connects a source, then branches into Power BI, Excel, Tableau, REST, OData. Never shows expected output. Never completes a developer flow.
+· A developer lands here, sees "connect to Power BI" and leaves. They had no idea the MCP server or Python SDK existed.
+· The fix isn't a rewrite — it's adding one developer path through the existing content, tested with a stopwatch, that ends with a working query.
+· Time-to-first-successful-query is the metric. Right now we're not measuring it. And it shows.""",
+
     36: """Quick fixes that don't wait.
 · These three things don't need a data review — the finding is already documented
 · Rewrite the llms.txt preamble: Connect AI product description, quickstart URL, enterprise source list
@@ -1362,6 +1369,71 @@ def slide_35_immediate_fixes(prs):
     set_notes(s, SCRIPTS[36])
 
 
+def slide_35b_quickstart_problem(prs):
+    s = blank(prs)
+    set_bg(s, CDATA_BG)
+    add_cdata_logo(s, 'dark')
+    overline(s, 'Days 1–30 · DX Finding')
+    box(s, 'The Quick Start Problem.',
+        ML, Emu(620000), CW, Emu(700000),
+        size=44, bold=True, color=CDATA_DARK, wrap=True)
+
+    COL_W = (CW - Emu(400000)) // 2
+    COL2_X = ML + COL_W + Emu(400000)
+    TOP = Emu(1550000)
+    ROW_H = Emu(950000)
+
+    # Left column — current state
+    shape(s, ML, TOP, COL_W, Emu(280000), fill=CDATA_DARK, rounded=False)
+    box(s, 'Current Quick Start', ML + Emu(120000), TOP + Emu(60000),
+        COL_W - Emu(240000), Emu(200000),
+        size=13, bold=True, color=CDATA_BG, wrap=False)
+
+    current = [
+        'Walks you through connecting a source',
+        'Branches: Power BI · Excel · Tableau · REST · OData',
+        'No expected output shown',
+        'Ends at "here are your options"',
+        'MCP server and Python SDK: invisible',
+    ]
+    dy = TOP + Emu(360000)
+    for item in current:
+        shape(s, ML, dy + Emu(70000), Emu(8000), Emu(200000), fill=CDATA_GRAY, rounded=False)
+        box(s, item, ML + Emu(180000), dy, COL_W - Emu(180000), Emu(320000),
+            size=14, color=CDATA_MID, wrap=True)
+        dy += Emu(380000)
+
+    # Divider arrow
+    box(s, '→', ML + COL_W + Emu(100000), TOP + Emu(900000), Emu(220000), Emu(400000),
+        size=36, bold=True, color=CDATA_YELLOW, wrap=False)
+
+    # Right column — what it should be
+    shape(s, COL2_X, TOP, COL_W, Emu(280000), fill=CDATA_YELLOW, rounded=False)
+    box(s, 'What it should be', COL2_X + Emu(120000), TOP + Emu(60000),
+        COL_W - Emu(240000), Emu(200000),
+        size=13, bold=True, color=CDATA_DARK, wrap=False)
+
+    should = [
+        'pip install cdata-connect-ai',
+        'Credentials: one step, not five',
+        '10 lines of code → run it → see output',
+        'Shows exactly what success looks like',
+        'Ends with a working agent querying real data',
+    ]
+    dy = TOP + Emu(360000)
+    for item in should:
+        shape(s, COL2_X, dy + Emu(70000), Emu(8000), Emu(200000), fill=CDATA_DARK, rounded=False)
+        box(s, item, COL2_X + Emu(180000), dy, COL_W - Emu(180000), Emu(320000),
+            size=14, color=CDATA_DARK, wrap=True)
+        dy += Emu(380000)
+
+    # Bottom callout
+    box(s, 'Time-to-first-successful-query is the metric. Right now we\'re not measuring it — and it shows.',
+        ML, Emu(4700000), CW, Emu(500000),
+        size=18, bold=True, color=CDATA_DARK, wrap=True)
+    set_notes(s, SCRIPTS['35b'])
+
+
 def slide_36_entry_point(prs):
     s = blank(prs)
     set_bg(s, CDATA_BG)
@@ -1747,6 +1819,7 @@ def build():
     slide_33_days_130_intro(prs)
     slide_34_three_workstreams(prs)
     slide_35_immediate_fixes(prs)
+    slide_35b_quickstart_problem(prs)
     slide_36_entry_point(prs)
     slide_37_days_3160(prs)
     slide_38_days_6190(prs)
