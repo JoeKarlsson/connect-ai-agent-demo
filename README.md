@@ -1,6 +1,6 @@
 # Enterprise Data AI Agent
 
-A natural-language CLI agent for querying enterprise data via [CData Connect AI's](https://cloud.cdata.com) managed MCP server. Built as a first-session developer experience audit — I timed every step from zero to a working cross-source query, logged every friction point, and wrote up what I'd fix.
+A demo built to show two distinct ways to connect enterprise data with Python — CData Connect AI's **Python SDK** (DB-API 2.0) and its **managed MCP server** — querying multiple live sources in a single session. Built as a first-session developer experience audit: I timed every step from zero to a working cross-source query, logged every friction point, and wrote up what I'd fix.
 
 **Findings:** [docs/dx-audit.md](docs/dx-audit.md)  
 **Interview presentation outline:** [docs/presentation-structure.md](docs/presentation-structure.md)
@@ -9,21 +9,17 @@ A natural-language CLI agent for querying enterprise data via [CData Connect AI'
 
 ## What It Does
 
-Ask questions in plain English. The agent routes queries through CData Connect AI's MCP server, which exposes 350+ data sources through a consistent SQL-queryable interface. No custom connectors. No per-source auth logic. Add a new source in the CData dashboard and it's immediately queryable — no code changes.
+Two interfaces to the same platform:
+
+**Python SDK (DB-API 2.0)** — `pip install cdata-connect-ai`. Standard cursor interface. Works with pandas, SQLAlchemy, and any existing Python data stack. No proprietary client to learn.
+
+**MCP Agent** — CData Connect AI exposes a managed MCP server. Claude receives available tools, decides which sources to query, and synthesizes answers across them. Natural language in, structured analysis out.
 
 **Connected sources in this demo:**
-- `SalesPipeline` — Google Sheets sales pipeline (20 opportunities, 4 reps, multi-region)
-- `GitHub1` — GitHub repos, commit activity, issues
+- `GoogleSheets1` — Google Sheets sales pipeline (20 opportunities, 4 reps, multi-region)
+- `GitHub1` — GitHub repos, commits, issues, pull requests
 - `SampleConnection1` — PostgreSQL (Customers, Orders, StockItems)
 - `SampleConnection2` — MySQL (same schema, different connection)
-
-**Example queries:**
-```
-What's my total pipeline value by stage?
-Who are my top 3 reps by open ARR?
-Show me my most recently updated GitHub repos.
-Cross-reference my top rep's deals with my public GitHub repos.
-```
 
 ---
 
@@ -37,7 +33,7 @@ Then open `.env` and fill in your credentials (see [Credentials](#credentials) b
 
 ```bash
 make check    # verify all credentials are set
-make demo     # run the scripted 3-act demo
+make demo     # scripted two-act demo
 make run      # interactive mode
 ```
 
@@ -50,9 +46,8 @@ make run      # interactive mode
 | `make setup` | Create venv, install dependencies, scaffold `.env` from `.env.example` |
 | `make check` | Verify all required credentials are present in `.env` |
 | `make run` | Launch interactive agent (type questions, `quit` to exit) |
-| `make demo` | Scripted 3-act demo — press Enter to advance between acts |
+| `make demo` | Scripted demo — press Enter to advance between acts |
 | `make demo-auto` | Auto-advances without keypresses (good for screen recordings) |
-| `make demo-fast` | Faster typing speed (good for rehearsal) |
 | `make clean` | Remove `.venv` and caches |
 
 ---
@@ -88,13 +83,10 @@ Three environment variables required in `.env`:
 
 ## Scripted Demo
 
-`demo.py` runs a three-act walkthrough:
+`demo.py` runs a two-act walkthrough — one act per interface:
 
-- **Act 1** — Single source: Google Sheets pipeline query (total ARR by stage, top reps)
-- **Act 2** — Second source: GitHub repos (different source type, same interface)
-- **Act 3** — Cross-source: connects both sources in one query (the "aha" moment)
-
-Queries are typed out character-by-character. Tool calls appear as dim progress lines. Results render as native terminal UI via `rich`.
+- **Act 1 — Python SDK (DB-API):** Connects via `cdata_connect_ai`, runs a SQL query against the Google Sheets pipeline, returns a pandas DataFrame. Shows the code, then executes it live.
+- **Act 2 — MCP Agent (multi-source):** Connects to the MCP server, takes a natural language question spanning Google Sheets + PostgreSQL, lets Claude issue the tool calls, and synthesizes a cross-source answer.
 
 ```bash
 make demo        # press Enter between acts — good for live presentations
@@ -106,16 +98,20 @@ make demo-auto   # auto-advances — good for screen recordings
 ## How It Works
 
 ```
-You → main.py → agent.py (Anthropic SDK tool use) → mcp_client.py → CData MCP Server → data source
+Interactive mode:
+  You → main.py → agent.py (Anthropic SDK tool use) → mcp_client.py → CData MCP Server → data source
+
+SDK mode:
+  demo.py → cdata_connect_ai (DB-API cursor) → CData Connect AI API → data source
 ```
 
-**`mcp_client.py`** — direct HTTP client for the CData MCP server at `https://mcp.cloud.cdata.com/mcp/`. Uses JSON-RPC 2.0 with SSE responses. Basic auth with base64(`email:PAT`). No CData SDK — just `requests`.
+**`mcp_client.py`** — HTTP client for the CData MCP server at `https://mcp.cloud.cdata.com/mcp/`. JSON-RPC 2.0 over SSE. Basic auth with base64(`email:PAT`).
 
-**`agent.py`** — agent loop using the standard Anthropic Python SDK. Claude receives available tools from the MCP server, decides which to call, and iterates until it has a complete answer. Uses `claude-sonnet-4-6`.
+**`agent.py`** — agent loop using the Anthropic Python SDK. Claude receives the MCP tool list, decides which to call, and iterates until it has a complete answer. Uses `claude-sonnet-4-6`.
 
-**`main.py`** — CLI entry point with `rich` terminal UI: spinner, dim tool progress lines, native markdown rendering.
+**`main.py`** — CLI entry point: spinner, dim tool progress lines, markdown rendering via `rich`.
 
-**`demo.py`** — scripted walkthrough with typewriter effect and press-to-advance pacing.
+**`demo.py`** — two-act scripted demo. Act 1 shows the Python SDK (DB-API) with live code execution. Act 2 shows the MCP agent doing a cross-source natural language query.
 
 ---
 
@@ -124,7 +120,7 @@ You → main.py → agent.py (Anthropic SDK tool use) → mcp_client.py → CDat
 ```
 .
 ├── main.py                          # interactive + single-query CLI
-├── demo.py                          # scripted 3-act demo
+├── demo.py                          # scripted two-act demo (SDK + MCP)
 ├── agent.py                         # Anthropic SDK agent loop
 ├── mcp_client.py                    # CData MCP HTTP client
 ├── requirements.txt

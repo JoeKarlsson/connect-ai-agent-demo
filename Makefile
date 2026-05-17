@@ -2,7 +2,7 @@ PYTHON := python3
 VENV   := .venv
 BIN    := $(VENV)/bin/python
 
-.PHONY: setup run demo clean check
+.PHONY: setup run demo demo-auto clean check
 
 # First-time setup: create venv, install deps, scaffold .env
 setup:
@@ -37,10 +37,6 @@ demo:
 # Auto-advancing demo (no keypresses — good for recordings)
 demo-auto:
 	$(BIN) demo.py --auto
-
-# Fast typing speed (good for rehearsal)
-demo-fast:
-	$(BIN) demo.py --fast
 
 # Remove venv and caches
 clean:

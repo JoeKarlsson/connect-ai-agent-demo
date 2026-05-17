@@ -105,93 +105,98 @@ Before talking about what I'd do, here's what we're actually up against.
 
 ---
 
-### Days 1–30: Audit before you build
+### Days 1–30: Instrument, baseline, and fix concurrently
 
-I've already started. Point to the repo and dx-audit.md.
+The framing here matters: this isn't "audit, then act." Fixes ship the moment we find them. Data collected on day 5 becomes a remediated redirect on day 8. The goal is a working baseline — not a perfect one.
 
-**Three audits running in parallel:**
+**Three parallel workstreams from day one, all feeding the same data model:**
 
-**1. Positioning audit** — What does the website say vs. what engineers actually need to hear?
-- Does the website make the Composio comparison legible? (It should.)
-- Is the SQL-queryable / live connectivity / enterprise depth story clear above the fold?
-- What does Sales say to engineering leads, and does it hold up?
+**1. Developer pipeline funnel instrumentation**
+- Map the full funnel: Discover → Evaluate → First API call → Build → Scale
+- Verify analytics coverage at each stage — site, docs, product activation
+- Pull existing product usage data: which ConnectAI connectors are getting trial activity? Where are enterprise users and AI agent builders dropping off?
+- First funnel health report by week 2 — this is the input that drives prioritization for days 31–90
 
-**2. DX audit** — I built with Connect AI this week. 6 documented friction points, all fixable. The one that matters most: time-to-first-API-call was ~15 minutes. That's good — but it took debugging two auth errors that shouldn't exist. (Show the audit doc.)
+**2. Keyword cluster + site health**
+- Technical SEO audit: redirect chains, Core Web Vitals, crawl health, internal linking
+- Keyword cluster mapping: which queries does CData rank for? Which high-value clusters are gaps?
+  - Priority clusters for ConnectAI: "enterprise MCP server," "AI agent data access," "SQL connectivity for LLMs," "live data for AI agents"
+- Don't wait for the full audit to finish — remediate obvious issues immediately (broken redirects, missing metadata, slow pages)
+- Set ranking baselines per cluster so we have a before/after for leadership
 
-**3. LLM discoverability audit** — I ran the baseline before this interview:
+**3. LLM discoverability + DX baseline**
+- LLM baseline: already run (CData absent from all 5 key queries, Composio named "best overall") — show the table
+- DX timing: time-to-first-API-call documented with stopwatch — 6 friction points logged in dx-audit.md
+- CData already has `llms.txt` on both `cdata.com` and `docs.cloud.cdata.com` — the foundation exists. Week 1 fix is rewriting the marketing file to be a curated Connect AI guide (SQL vs. action-based, quickstart URL, enterprise source list) rather than a product index. The docs file is a 300-page sitemap; that becomes `llms-full.txt`. One week of work, not a campaign.
+- Start shipping into training-data-relevant surfaces in parallel: README improvements, Stack Overflow answers, GitHub repos with working ConnectAI examples — this doesn't wait for the llms.txt rewrite
 
-| Query | Claude | What appeared instead |
-|---|---|---|
-| "Best MCP server for enterprise SaaS data?" | ❌ No CData | Composio, Zapier MCP, Pipedream |
-| "How do I connect Claude to Salesforce?" | ❌ No CData | Custom build, community npm packages |
-| "Best MCP server for multiple enterprise data endpoints?" | ❌ No CData | Composio ("best overall"), Airbyte MCP |
+**Audiences being instrumented across all three workstreams:** enterprise users (IT leads, data teams), developers (AI agent builders, Python data engineers), and AI agents (Claude Code, Cursor, Copilot). Each discovers CData through a different channel, and each channel breaks differently. ConnectAI is the primary focus.
 
-CData is absent from every response. Composio is named "best overall." That's not a content gap — it's a training data gap. Composio has 150K developers writing READMEs, Stack Overflow answers, and GitHub repos that train LLMs. CData doesn't have that yet. Fixable. Measurable quarterly.
-
-**Day 30 deliverable:** Positioning + DX + discoverability brief to product and leadership. Share findings early — don't wait for perfect data.
-
----
-
-### Days 31–60: Messaging architecture and launch foundations
-
-**1. Build the competitive differentiation framework**
-
-The core positioning question: when an engineer is choosing between building themselves, using Composio, or using CData — what's the decision criteria and where does CData win?
-
-- DIY: Full control, 6 months, maintenance burden forever
-- Composio: Fast setup, action-based, great for SaaS workflows, breaks down on SQL/BI/enterprise ERP use cases
-- CData: SQL-native, enterprise depth, live data — the right answer for agents that need to query, analyze, and join across enterprise sources
-
-Turn this into a one-pager Sales can actually use.
-
-**2. Website messaging**
-
-Own the developer-facing pages. What needs to change:
-- Lead with the SQL-queryable angle — that's the differentiator Composio can't match
-- Make the "live data vs. batch ELT" distinction explicit — engineers conflate CData with Fivetran constantly
-- MCP product page: speak to agent builders specifically, not generic "enterprise AI"
-
-**3. Product launch plan for three products**
-
-- **Connect AI Developer Edition + Python SDK**: launch together, same week. Complementary paths to the same layer — MCP for agent builders, DB-API for data engineers.
-- **CLI**: launch as beta with clear GA criteria stated publicly. Don't overclaim. Honest beta positioning builds more trust than vague "coming soon."
-- Coordinate with DevRel on community seeding; PMM owns the launch assets, website copy, and Sales brief.
-
-**4. Sales/CS enablement brief**
-
-Sales is having conversations with engineering leads who've evaluated Composio. They need:
-- The Composio comparison in plain language
-- When to lead with MCP, when to lead with SQL/SDK
-- How to respond to "we can just build this ourselves"
-- One working code example they can share in a follow-up
+**Day 30 deliverable:** Funnel baseline + keyword cluster map + LLM/DX findings. Data with clear implications — not a strategy deck.
 
 ---
 
-### Days 61–90: Execute, measure, iterate
+### Days 31–60: Let data drive prioritization
 
-**Ship 2–3 high-impact content pieces** (written by me, not handed to a technical writer):
-- "CData vs. Composio: when SQL connectivity beats action-based tools" — honest, specific, benchmark-backed
-- MCP quickstart: Claude agent → Connect AI → enterprise source, under 20 minutes
-- "Building vs. buying data connectivity for AI agents" — the ROI case with reproducible numbers
+By now the baseline exists. The question is: which part of the developer funnel is actually failing?
 
-**Measurement infrastructure from day one:**
-- UTM + first-touch attribution on all developer content (community-influenced deals need to show up in pipeline reporting)
-- LLM mention benchmark re-run (quarterly — need movement data by Q3)
-- Developer activation funnel: first API call → trial → production use → expansion
+**Read the data, then allocate effort:**
+- If discovery is the bottleneck → SEO remediation + LLM presence content + community seeding
+- If evaluation-to-activation is leaking → fix the quickstart, add honest comparison content (ConnectAI vs. Composio, ConnectAI vs. DIY)
+- If activation-to-production is breaking → DX improvements, better error messages, searchable error context
+- If product usage data shows specific connectors driving early enterprise traction → build content around those exact sources first
 
-**Present at day 90:** what we shipped, what moved, what we'd do differently. Evidence-first.
+The funnel tells you where to push. You don't decide up front — you respond to signal.
+
+**What ships in parallel, regardless of where the bottleneck is:**
+- Highest-ROI SEO remediations already identified in days 1–30 (these are queued, not blocked)
+- 1–2 content pieces targeting keyword clusters with clear volume and no strong incumbent
+- Messaging framework for all three ConnectAI audiences: enterprise buyers, developer builders, and AI agent integrations each need different landing language
+- One concrete DX fix — whatever timing data shows is most directly blocking the 20-minute time-to-value window
+
+**Product usage check-in with product team:**
+- Which enterprise connectors are generating the most trial activity?
+- Which parts of ConnectAI are generating support tickets? (That's a DX failure signal, not a support problem.)
+- What does usage tell us about actual ICP — data engineers, AI agent builders, or enterprise IT?
+
+Messaging architecture gets built around these answers, not before them.
+
+---
+
+### Days 61–90: Iterate on what the data showed — not on the original plan
+
+This is not "execute the plan." It's respond to what moved and what didn't.
+
+**Re-measure at day 60 against day 30 baseline:**
+- Did the funnel improve at the stage we targeted? If not, what changed?
+- Are keyword cluster rankings moving? Which remediations are showing ROI?
+- LLM benchmark re-run — is ConnectAI appearing in any new query responses?
+- Product usage: any shift in activation patterns, connector adoption, or enterprise signal volume?
+
+**Ship the next round based on signal:**
+- Extend content in keyword clusters showing ranking movement
+- Double down on distribution surfaces that drove actual activation (signups, first API calls — not impressions)
+- Fix the next-highest-priority DX friction surfaced by product data or funnel analysis
+
+**Content that ships in this window (driven by data, not pre-planned):**
+- The comparison piece addressing the evaluation question we saw most in the funnel data
+- MCP quickstart updated from dx-audit findings — tested with stopwatch, not assumed
+- One piece specifically written for AI agent builders if product usage confirms that's the leading ICP
+
+**Day 90 deliverable:** What moved in the funnel, rankings, and LLM presence — and why. Not an activity report. Evidence-first, with a draft 6-month roadmap built from what we learned.
 
 ---
 
 ### Goals framework
 
-| Metric | Target | What it proves |
-|---|---|---|
-| LLM discoverability rank | CData in top 3 for 3–5 key queries by Q3 | Training data gap is closing |
-| Developer activation rate | Define funnel baseline, 20% improvement by Q3 | Evaluation journey is working |
-| Sales-influenced deals with developer touchpoints | Establish baseline + attribution | PMM is contributing to pipeline, not just awareness |
-| Time-to-first-API-call | Under 15 min vs. Composio benchmark | DX is competitive |
-| Competitive win rate vs. Composio | Track in CRM | Messaging is landing in engineering conversations |
+| Metric | Day 30 baseline | Day 90 target | What it proves |
+|---|---|---|---|
+| Developer funnel drop-off rate (by stage) | Established from audit | 20%+ improvement at highest-loss stage | We found and fixed the right bottleneck |
+| Keyword cluster rankings (5 priority clusters) | Mapped at day 30 | Movement on 3–5 clusters | SEO remediation is working |
+| LLM discoverability for ConnectAI | 0/5 key queries (current baseline) | CData in 2–3 responses | Training data gap closing |
+| Time-to-first-API-call | ~15 min with friction | Under 15 min, clean | DX is competitive |
+| Product trial activation rate | TBD from usage data | Directional improvement + established baseline | Funnel is converting |
+| Community-influenced pipeline | Not attributed | Attribution established + first tagged deal | PMM contributing to revenue, not just awareness |
 
 ---
 
